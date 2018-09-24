@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{825BBA9E-A40E-446C-A920-6177F630F6BC}</ProjectGuid>
+    <RootNamespace>foundation</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>G:\WorkSpace\newengine\genesis_engine\Engine\foundation;G:\WorkSpace\newengine\genesis_engine\Engine\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\src\foundation;..\..\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\foundation\core\config.h" />
+    <ClInclude Include="..\..\src\foundation\core\debug.h" />
+    <ClInclude Include="..\..\src\foundation\core\types.h" />
+    <ClInclude Include="..\..\src\foundation\math\bbox.h" />
+    <ClInclude Include="..\..\src\foundation\math\clipstatus.h" />
+    <ClInclude Include="..\..\src\foundation\math\color.h" />
+    <ClInclude Include="..\..\src\foundation\math\curve.h" />
+    <ClInclude Include="..\..\src\foundation\math\float2.h" />
+    <ClInclude Include="..\..\src\foundation\math\float3.h" />
+    <ClInclude Include="..\..\src\foundation\math\float4.h" />
+    <ClInclude Include="..\..\src\foundation\math\frustum.h" />
+    <ClInclude Include="..\..\src\foundation\math\intersection.h" />
+    <ClInclude Include="..\..\src\foundation\math\line.h" />
+    <ClInclude Include="..\..\src\foundation\math\matrix44.h" />
+    <ClInclude Include="..\..\src\foundation\math\MinMaxCurve.h" />
+    <ClInclude Include="..\..\src\foundation\math\newMath\new_float4.h" />
+    <ClInclude Include="..\..\src\foundation\math\newMath\new_matrix44.h" />
+    <ClInclude Include="..\..\src\foundation\math\newMath\new_plane.h" />
+    <ClInclude Include="..\..\src\foundation\math\newMath\new_point.h" />
+    <ClInclude Include="..\..\src\foundation\math\newMath\new_quaternion.h" />
+    <ClInclude Include="..\..\src\foundation\math\newMath\new_scalar.h" />
+    <ClInclude Include="..\..\src\foundation\math\newMath\new_vector.h" />
+    <ClInclude Include="..\..\src\foundation\math\noise.h" />
+    <ClInclude Include="..\..\src\foundation\math\OgreMath\asm_math.h" />
+    <ClInclude Include="..\..\src\foundation\math\OgreMath\OgreMath.h" />
+    <ClInclude Include="..\..\src\foundation\math\OgreMath\OgreMatrix3.h" />
+    <ClInclude Include="..\..\src\foundation\math\OgreMath\OgreMatrix4.h" />
+    <ClInclude Include="..\..\src\foundation\math\OgreMath\OgrePrerequisites.h" />
+    <ClInclude Include="..\..\src\foundation\math\OgreMath\OgreQuaternion.h" />
+    <ClInclude Include="..\..\src\foundation\math\OgreMath\OgreVector3.h" />
+    <ClInclude Include="..\..\src\foundation\math\OgreMath\OgreVector4.h" />
+    <ClInclude Include="..\..\src\foundation\math\plane.h" />
+    <ClInclude Include="..\..\src\foundation\math\point.h" />
+    <ClInclude Include="..\..\src\foundation\math\point2d.h" />
+    <ClInclude Include="..\..\src\foundation\math\polar.h" />
+    <ClInclude Include="..\..\src\foundation\math\PolyCurve.h" />
+    <ClInclude Include="..\..\src\foundation\math\quaternion.h" />
+    <ClInclude Include="..\..\src\foundation\math\rand.h" />
+    <ClInclude Include="..\..\src\foundation\math\Random.h" />
+    <ClInclude Include="..\..\src\foundation\math\ray.h" />
+    <ClInclude Include="..\..\src\foundation\math\rectangle.h" />
+    <ClInclude Include="..\..\src\foundation\math\scalar.h" />
+    <ClInclude Include="..\..\src\foundation\math\size.h" />
+    <ClInclude Include="..\..\src\foundation\math\sphere_.h" />
+    <ClInclude Include="..\..\src\foundation\math\transform44.h" />
+    <ClInclude Include="..\..\src\foundation\math\vector.h" />
+    <ClInclude Include="..\..\src\foundation\memory\memory.h" />
+    <ClInclude Include="..\..\src\foundation\stdneb.h" />
+    <ClInclude Include="..\..\src\foundation\util\stl.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\foundation\core\debug.cc" />
+    <ClCompile Include="..\..\src\foundation\math\bbox.cc" />
+    <ClCompile Include="..\..\src\foundation\math\float3.cc" />
+    <ClCompile Include="..\..\src\foundation\math\intersection.cc" />
+    <ClCompile Include="..\..\src\foundation\math\line.cc" />
+    <ClCompile Include="..\..\src\foundation\math\MinMaxCurve.cc" />
+    <ClCompile Include="..\..\src\foundation\math\newMath\new_float4.cc" />
+    <ClCompile Include="..\..\src\foundation\math\newMath\new_matrix44.cc" />
+    <ClCompile Include="..\..\src\foundation\math\newMath\new_plane.cc" />
+    <ClCompile Include="..\..\src\foundation\math\newMath\new_quaternion.cc" />
+    <ClCompile Include="..\..\src\foundation\math\OgreMath\OgreMath.cc" />
+    <ClCompile Include="..\..\src\foundation\math\OgreMath\OgreMatrix3.cc" />
+    <ClCompile Include="..\..\src\foundation\math\OgreMath\OgreMatrix4.cc" />
+    <ClCompile Include="..\..\src\foundation\math\OgreMath\OgreQuaternion.cc" />
+    <ClCompile Include="..\..\src\foundation\math\OgreMath\OgreVector3.cc" />
+    <ClCompile Include="..\..\src\foundation\math\OgreMath\OgreVector4.cc" />
+    <ClCompile Include="..\..\src\foundation\math\size.cc" />
+    <ClCompile Include="..\..\src\foundation\math\sphere_.cc" />
+    <ClCompile Include="..\..\src\foundation\stdneb.cc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

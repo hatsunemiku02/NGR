@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="base">
+      <UniqueIdentifier>{6bb67672-64b3-4b5b-95b6-7fa96e65a680}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="camera">
+      <UniqueIdentifier>{fb2701af-1c77-479f-ac98-7fba39cc4764}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="light">
+      <UniqueIdentifier>{9d758827-b9fd-4652-ad6a-e3f04f21b106}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="material">
+      <UniqueIdentifier>{c9a4ab03-65dd-4ffa-9d5e-25796ef53081}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="projector">
+      <UniqueIdentifier>{21468bfa-a74a-449f-a478-be5f38e573b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="renderable">
+      <UniqueIdentifier>{67db9abe-6722-4202-b282-933e60020923}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vision">
+      <UniqueIdentifier>{fe5ead58-93d2-4e59-ada9-e8b47cfd2806}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="camera\pipeline">
+      <UniqueIdentifier>{93fc21e6-f00d-47e8-9a50-91d0e6e8e55f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\GraphicConfig.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\GraphicObjectManager.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\GraphicSystem.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\RenderTargetSuite.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\RenderUnit.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\stdneb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\ViewPortWindow.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\base\GraphicBufferData.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\base\GraphicObject.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\base\ImageFilters.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\base\MultipleRenderToTexture.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\base\RenderQueue.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\base\RenderToTexture.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\base\StreamBufferPool.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\Camera.cc">
+      <Filter>camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\CameraSetting.cc">
+      <Filter>camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\ActiveLight.cc">
+      <Filter>camera\pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\DeferredLightingPass.cc">
+      <Filter>camera\pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\DeferredLightingRenderPipeline.cc">
+      <Filter>camera\pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\ForwardShadingRenderPipeline.cc">
+      <Filter>camera\pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\RenderData.cc">
+      <Filter>camera\pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\RenderPipeline.cc">
+      <Filter>camera\pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\RenderPipelineManager.cc">
+      <Filter>camera\pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\VisibleNode.cc">
+      <Filter>camera\pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Light\Light.cc">
+      <Filter>light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Material\GlobalShaderParam.cc">
+      <Filter>material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Material\Material.cc">
+      <Filter>material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Material\materialinstance.cc">
+      <Filter>material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Material\MaterialManager.cc">
+      <Filter>material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Material\MaterialParam.cc">
+      <Filter>material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Material\MaterialPass.cc">
+      <Filter>material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Material\MaterialTech.cc">
+      <Filter>material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Material\ShaderParam.cc">
+      <Filter>material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Vision\RenderScene.cc">
+      <Filter>vision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Renderable\GraphicRenderer.cc">
+      <Filter>renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Renderable\QuadRenderable.cc">
+      <Filter>renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Renderable\Renderable.cc">
+      <Filter>renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Renderable\RenderObject.cc">
+      <Filter>renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Renderable\StaticBatchRender.cc">
+      <Filter>renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Projector\CollisionModel.cc">
+      <Filter>projector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Projector\CollisionModelServer.cc">
+      <Filter>projector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Projector\Projector.cc">
+      <Filter>projector</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\GraphicConfig.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\GraphicObjectManager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\GraphicSystem.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\RenderTargetSuite.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\RenderUnit.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\stdneb.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\ViewPortWindow.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\base\DataCollection.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\base\GraphicBufferData.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\base\GraphicObject.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\base\ImageFilters.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\base\MultipleRenderToTexture.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\base\RenderBase.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\base\RenderQueue.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\base\RenderToTexture.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\base\StreamBufferPool.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\Camera.h">
+      <Filter>camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\CameraSetting.h">
+      <Filter>camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\ActiveLight.h">
+      <Filter>camera\pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\DeferredLightingPass.h">
+      <Filter>camera\pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\DeferredLightingRenderPipeline.h">
+      <Filter>camera\pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\ForwardShadingRenderPipeline.h">
+      <Filter>camera\pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\RenderData.h">
+      <Filter>camera\pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\RenderPipeline.h">
+      <Filter>camera\pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\RenderPipelineManager.h">
+      <Filter>camera\pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\VisibleNode.h">
+      <Filter>camera\pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Light\Light.h">
+      <Filter>light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Material\GlobalShaderParam.h">
+      <Filter>material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Material\Material.h">
+      <Filter>material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Material\materialinstance.h">
+      <Filter>material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Material\MaterialManager.h">
+      <Filter>material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Material\MaterialParam.h">
+      <Filter>material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Material\MaterialPass.h">
+      <Filter>material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Material\MaterialTech.h">
+      <Filter>material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Material\ShaderParam.h">
+      <Filter>material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Vision\RenderScene.h">
+      <Filter>vision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Renderable\GraphicRenderer.h">
+      <Filter>renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Renderable\QuadRenderable.h">
+      <Filter>renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Renderable\Renderable.h">
+      <Filter>renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Renderable\RenderObject.h">
+      <Filter>renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Renderable\StaticBatchRender.h">
+      <Filter>renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Projector\CollisionModel.h">
+      <Filter>projector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Projector\CollisionModelServer.h">
+      <Filter>projector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Projector\Projector.h">
+      <Filter>projector</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

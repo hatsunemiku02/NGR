@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{9B522A42-0960-4912-84C0-08EF4AE7995B}</ProjectGuid>
+    <RootNamespace>RenderSystem</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <ProjectName>GraphicSystem</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Engine\graphicsystem\base\GraphicBufferData.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\base\GraphicObject.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\base\ImageFilters.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\base\MultipleRenderToTexture.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\base\RenderQueue.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\base\RenderToTexture.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\base\StreamBufferPool.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\Camera.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\CameraSetting.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\ActiveLight.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\DeferredLightingPass.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\DeferredLightingRenderPipeline.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\ForwardShadingRenderPipeline.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\RenderData.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\RenderPipeline.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\RenderPipelineManager.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\VisibleNode.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\GraphicConfig.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\GraphicObjectManager.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\GraphicSystem.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Light\Light.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Material\GlobalShaderParam.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Material\Material.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Material\materialinstance.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Material\MaterialManager.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Material\MaterialParam.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Material\MaterialPass.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Material\MaterialTech.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Material\ShaderParam.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Projector\CollisionModel.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Projector\CollisionModelServer.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Projector\Projector.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Renderable\GraphicRenderer.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Renderable\QuadRenderable.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Renderable\Renderable.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Renderable\RenderObject.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Renderable\StaticBatchRender.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\RenderTargetSuite.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\RenderUnit.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\stdneb.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\ViewPortWindow.cc" />
+    <ClCompile Include="..\..\..\Engine\graphicsystem\Vision\RenderScene.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Engine\graphicsystem\base\DataCollection.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\base\GraphicBufferData.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\base\GraphicObject.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\base\ImageFilters.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\base\MultipleRenderToTexture.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\base\RenderBase.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\base\RenderQueue.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\base\RenderToTexture.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\base\StreamBufferPool.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\Camera.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\CameraSetting.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\ActiveLight.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\DeferredLightingPass.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\DeferredLightingRenderPipeline.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\ForwardShadingRenderPipeline.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\RenderData.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\RenderPipeline.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\RenderPipelineManager.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Camera\RenderPipeline\VisibleNode.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\GraphicConfig.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\GraphicObjectManager.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\GraphicSystem.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Light\Light.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Material\GlobalShaderParam.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Material\Material.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Material\materialinstance.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Material\MaterialManager.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Material\MaterialParam.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Material\MaterialPass.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Material\MaterialTech.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Material\ShaderParam.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Projector\CollisionModel.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Projector\CollisionModelServer.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Projector\Projector.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Renderable\GraphicRenderer.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Renderable\QuadRenderable.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Renderable\Renderable.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Renderable\RenderObject.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Renderable\StaticBatchRender.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\RenderTargetSuite.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\RenderUnit.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\stdneb.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\ViewPortWindow.h" />
+    <ClInclude Include="..\..\..\Engine\graphicsystem\Vision\RenderScene.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

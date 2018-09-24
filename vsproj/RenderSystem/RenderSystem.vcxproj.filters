@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="base">
+      <UniqueIdentifier>{24a9e5ca-eec1-4804-9469-b0c4d2c8dc64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dx12">
+      <UniqueIdentifier>{1c768da3-0de9-477d-aaf0-140bd7204ec3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{04b4f714-2db5-4d37-a871-fa6008dffaa5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="compiletest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\RenderSystem.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\stdneb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\IndexBufferD3D12.cc">
+      <Filter>dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\PrimitiveGroupD3D12.cc">
+      <Filter>dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\RenderDeviceD3D12.cc">
+      <Filter>dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\RenderTargetD3D12.cc">
+      <Filter>dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\TextureD3D12.cc">
+      <Filter>dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\VertexBufferD3D12.cc">
+      <Filter>dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\VertexLayoutD3D12.cc">
+      <Filter>dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\CommandQueue.cc">
+      <Filter>dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\D3D12Types.cc">
+      <Filter>dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\D3D12Window.cc">
+      <Filter>dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\DescriptorHeap.cc">
+      <Filter>dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\DX12ConstantBuffer.cc">
+      <Filter>dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\DX12Pso.cc">
+      <Filter>dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\DX12RootSignature.cc">
+      <Filter>dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\RenderTarget.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\RenderWindow.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\RootSignature.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\SamplerObject.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\Texture.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\VertexBuffer.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\VertexComponent.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\VertexLayout.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\BlendObject.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\BufferData.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\ConstantBuffer.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\DepthStencilObject.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\GPUProgram.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\IndexBuffer.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\MultipleRenderTarget.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\PixelFormat.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\PrimitiveGroup.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\Pso.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\RasterizerObject.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\RenderCommandType.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\RenderDevice.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\RenderDeviceTypes.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\RenderDisplay.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\RenderResource.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\base\RenderStateDesc.cc">
+      <Filter>base</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\rendersystem\RenderSystem.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\stdneb.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\IndexBufferD3D12.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\PrimitiveGroupD3D12.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\RenderDeviceD3D12.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\RenderTargetD3D12.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\TextureD3D12.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\VertexBufferD3D12.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\VertexLayoutD3D12.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\CommandQueue.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\D3D12Heads.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\D3D12Types.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\D3D12Window.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\d3dx12.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\DescriptorHeap.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\DX12ConstantBuffer.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\DX12Pso.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\DX12RootSignature.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\config\RenderDeviceConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\RenderStateDesc.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\RenderTarget.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\RenderWindow.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\RootSignature.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\SamplerObject.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\Texture.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\VertexBuffer.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\VertexComponent.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\VertexLayout.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\BlendObject.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\BufferData.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\ConstantBuffer.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\DepthStencilObject.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\GPUProgram.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\GraphicCardCapability.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\IndexBuffer.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\MultipleRenderTarget.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\PixelFormat.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\PixelFormatDesc.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\PrimitiveGroup.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\Pso.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\RasterizerObject.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\RenderCommandType.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\RenderDevice.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\RenderDeviceTypes.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\RenderDisplay.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\base\RenderResource.h">
+      <Filter>base</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

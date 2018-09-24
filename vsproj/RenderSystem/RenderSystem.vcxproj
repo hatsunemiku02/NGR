@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{9B522A42-0960-4912-84C0-08EF4AE7995B}</ProjectGuid>
+    <RootNamespace>RenderSystem</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <ProjectName>RenderSystem</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>G:\WorkSpace\newengine\genesis_engine\Engine\foundation;G:\WorkSpace\newengine\genesis_engine\Engine\rendersystem;G:\WorkSpace\newengine\genesis_engine\Engine\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\src;..\..\src\foundation;..\..\src\rendersystem;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\rendersystem\base\BlendObject.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\BufferData.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\ConstantBuffer.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\DepthStencilObject.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\GPUProgram.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\IndexBuffer.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\MultipleRenderTarget.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\PixelFormat.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\PrimitiveGroup.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\Pso.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\RasterizerObject.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\RenderCommandType.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\RenderDevice.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\RenderDeviceTypes.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\RenderDisplay.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\RenderResource.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\RenderStateDesc.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\RenderTarget.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\RenderWindow.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\RootSignature.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\SamplerObject.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\Texture.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\VertexBuffer.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\VertexComponent.cc" />
+    <ClCompile Include="..\..\src\rendersystem\base\VertexLayout.cc" />
+    <ClCompile Include="..\..\src\rendersystem\d3d12\CommandQueue.cc" />
+    <ClCompile Include="..\..\src\rendersystem\d3d12\D3D12Types.cc" />
+    <ClCompile Include="..\..\src\rendersystem\d3d12\D3D12Window.cc" />
+    <ClCompile Include="..\..\src\rendersystem\d3d12\DescriptorHeap.cc" />
+    <ClCompile Include="..\..\src\rendersystem\d3d12\DX12ConstantBuffer.cc" />
+    <ClCompile Include="..\..\src\rendersystem\d3d12\DX12Pso.cc" />
+    <ClCompile Include="..\..\src\rendersystem\d3d12\DX12RootSignature.cc" />
+    <ClCompile Include="..\..\src\rendersystem\d3d12\IndexBufferD3D12.cc" />
+    <ClCompile Include="..\..\src\rendersystem\d3d12\PrimitiveGroupD3D12.cc" />
+    <ClCompile Include="..\..\src\rendersystem\d3d12\RenderDeviceD3D12.cc" />
+    <ClCompile Include="..\..\src\rendersystem\d3d12\RenderTargetD3D12.cc" />
+    <ClCompile Include="..\..\src\rendersystem\d3d12\TextureD3D12.cc" />
+    <ClCompile Include="..\..\src\rendersystem\d3d12\VertexBufferD3D12.cc" />
+    <ClCompile Include="..\..\src\rendersystem\d3d12\VertexLayoutD3D12.cc" />
+    <ClCompile Include="..\..\src\rendersystem\RenderSystem.cc" />
+    <ClCompile Include="..\..\src\rendersystem\stdneb.cc" />
+    <ClCompile Include="compiletest.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\rendersystem\base\BlendObject.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\BufferData.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\ConstantBuffer.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\DepthStencilObject.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\GPUProgram.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\GraphicCardCapability.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\IndexBuffer.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\MultipleRenderTarget.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\PixelFormat.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\PixelFormatDesc.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\PrimitiveGroup.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\Pso.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\RasterizerObject.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\RenderCommandType.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\RenderDevice.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\RenderDeviceTypes.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\RenderDisplay.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\RenderResource.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\RenderStateDesc.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\RenderTarget.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\RenderWindow.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\RootSignature.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\SamplerObject.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\Texture.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\VertexBuffer.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\VertexComponent.h" />
+    <ClInclude Include="..\..\src\rendersystem\base\VertexLayout.h" />
+    <ClInclude Include="..\..\src\rendersystem\config\RenderDeviceConfig.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\CommandQueue.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\D3D12Heads.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\D3D12Types.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\D3D12Window.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\d3dx12.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\DescriptorHeap.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\DX12ConstantBuffer.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\DX12Pso.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\DX12RootSignature.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\IndexBufferD3D12.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\PrimitiveGroupD3D12.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\RenderDeviceD3D12.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\RenderTargetD3D12.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\TextureD3D12.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\VertexBufferD3D12.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\VertexLayoutD3D12.h" />
+    <ClInclude Include="..\..\src\rendersystem\RenderSystem.h" />
+    <ClInclude Include="..\..\src\rendersystem\stdneb.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
