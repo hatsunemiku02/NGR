@@ -113,7 +113,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	g_pResourceCmdList->ExecuteCommandList();
 	g_pResourceCmdList->WaitForExecution();
 
-	pipeline* renderPipeline = new pipeline();
+	Pipeline* renderPipeline = new Pipeline();
 	std::shared_ptr<ViewPortD3D12> pViewPort = std::make_shared<ViewPortD3D12>();
 	pViewPort->Init( 800, 600, hwnd);
 	std::shared_ptr<RenderTarget> pRenderTarget = std::make_shared<RenderTarget>();

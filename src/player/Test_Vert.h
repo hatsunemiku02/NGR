@@ -8,8 +8,6 @@ struct Vertex
 	Math::float4 position;
 };
 
-
-
 class TestVert
 {
 public:

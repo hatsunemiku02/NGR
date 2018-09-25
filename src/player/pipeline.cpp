@@ -2,23 +2,23 @@
 #include "d3d12/DescriptorHeap.h"
 #include "d3d12/VertexBufferD3D12.h"
 
-pipeline::pipeline()
+Pipeline::Pipeline()
 {
 	m_CommandList = std::make_unique<D3D12::GraphicCommandList> ();
 }
 
-pipeline::~pipeline()
+Pipeline::~Pipeline()
 {
 
 }
 
-void pipeline::SetViewPort(const std::shared_ptr<ViewPortD3D12>& pViewPort)
+void Pipeline::SetViewPort(const std::shared_ptr<ViewPortD3D12>& pViewPort)
 {
 	m_pViewPort = pViewPort;
 }
 
 
-void pipeline::Reset()
+void Pipeline::Reset()
 {
 	m_CommandList->WaitForExecution();
 	m_CommandList->ResetState();
@@ -43,7 +43,7 @@ void pipeline::Reset()
 
 }
 
-void pipeline::RenderOneItem(const std::shared_ptr<RenderObj>& obj)
+void Pipeline::RenderOneItem(const std::shared_ptr<RenderObj>& obj)
 {
 	m_CommandList->GetCommandList()->SetGraphicsRootSignature(obj->m_pRootSig->GetRootSignature());
 	m_CommandList->GetCommandList()->SetPipelineState(obj->m_pPipeStateObj->GetPso());
@@ -56,7 +56,7 @@ void pipeline::RenderOneItem(const std::shared_ptr<RenderObj>& obj)
 	m_CommandList->GetCommandList()->DrawInstanced(3, 1, 0, 0);
 }
 
-void pipeline::Render()
+void Pipeline::Render()
 {
 	for (auto renderobj : m_RenderList)
 	{

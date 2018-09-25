@@ -7,11 +7,11 @@
 #include "ViewPort.h"
 #include "RenderTarget.h"
 
-class pipeline
+class Pipeline
 {
 public:
-	pipeline();
-	~pipeline();
+	Pipeline();
+	~Pipeline();
 
 	void SetViewPort(const std::shared_ptr<ViewPortD3D12>& pViewPort);
 	
@@ -35,17 +35,17 @@ private:
 };
 
 
-inline void pipeline::PrepareRenderList(size_t count)
+inline void Pipeline::PrepareRenderList(size_t count)
 {
 	m_RenderList.reserve(count);
 }
 
-inline void pipeline::AddRenderObj(const std::shared_ptr<RenderObj>& obj)
+inline void Pipeline::AddRenderObj(const std::shared_ptr<RenderObj>& obj)
 {
 	m_RenderList.push_back(obj);
 }
 
-inline void pipeline::ResetRenderList()
+inline void Pipeline::ResetRenderList()
 {
 	m_RenderList.clear();
 }
