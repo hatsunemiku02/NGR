@@ -24,6 +24,9 @@
     <ClInclude Include="..\..\src\player\TestShader.h">
       <Filter>Graphic</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\player\Material.h">
+      <Filter>Graphic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\player\main.cpp">
@@ -39,6 +42,9 @@
       <Filter>Graphic</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\player\Viewport.cpp">
+      <Filter>Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\player\Material.cpp">
       <Filter>Graphic</Filter>
     </ClCompile>
   </ItemGroup>

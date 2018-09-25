@@ -9,6 +9,7 @@
 
 #include "../rendersystem/base/PixelFormat.h"
 #include "../rendersystem/base/RenderCommandType.h"
+#include "base/VertexLayout.h"
 
 namespace RenderBase
 {
@@ -481,6 +482,9 @@ namespace RenderBase
 		uint  vsLength;
 		uint  psLength;
 		std::vector<VertexLayoutDesc>	vertexLayout;
+
+		std::shared_ptr<RenderBase::VertexLayout>		pVertexLayout;
+
 		DeviceBlendState				renderBlendState;
 		DeviceRasterizerState			renderRasterizerState;
 		DeviceDepthAndStencilState		renderDepthStencilState;

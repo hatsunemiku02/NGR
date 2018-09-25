@@ -3,6 +3,7 @@
 #include "DX12RootSignature.h"
 #include "D3D12Types.h"
 #include "RenderDeviceD3D12.h"
+#include "d3d12/VertexLayoutD3D12.h"
 #include <string>
 
 #if RENDERDEVICE_D3D12
@@ -27,8 +28,9 @@ DX12Pso::~DX12Pso()
 void DX12Pso::Init(const RenderBase::PsoData& info, const std::shared_ptr<RenderBase::RootSignature>& pSignature)
 {
 	D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc = {};
-
-	std::vector<D3D12_INPUT_ELEMENT_DESC> inputList = _CreateInput(info);
+	
+	std::shared_ptr<D3D12::VertexLayoutD3D12> dx12layout = std::static_pointer_cast<D3D12::VertexLayoutD3D12>(info.pVertexLayout);
+	std::vector<D3D12_INPUT_ELEMENT_DESC>& inputList = dx12layout->GetHandle();
 
 	psoDesc.InputLayout.NumElements = inputList.size();
 	psoDesc.InputLayout.pInputElementDescs = &(*inputList.cbegin());

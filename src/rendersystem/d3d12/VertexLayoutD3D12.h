@@ -24,13 +24,18 @@ namespace D3D12
 
 		void GenerateDeclarationD3D12();
 
+		std::vector<D3D12_INPUT_ELEMENT_DESC>& GetHandle();
+
 	private:
 
 		std::vector<D3D12_INPUT_ELEMENT_DESC> m_InputDescCollection;
 
 	};
 
-
+	inline std::vector<D3D12_INPUT_ELEMENT_DESC>& VertexLayoutD3D12::GetHandle()
+	{
+		return m_InputDescCollection;
+	}
 }
 
 #endif

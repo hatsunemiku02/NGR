@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\player\Material.h" />
     <ClInclude Include="..\..\src\player\pipeline.h" />
     <ClInclude Include="..\..\src\player\RenderObj.h" />
     <ClInclude Include="..\..\src\player\RenderTarget.h" />
@@ -158,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\player\main.cpp" />
+    <ClCompile Include="..\..\src\player\Material.cpp" />
     <ClCompile Include="..\..\src\player\pipeline.cpp" />
     <ClCompile Include="..\..\src\player\RenderObj.cpp" />
     <ClCompile Include="..\..\src\player\RenderTarget.cpp" />
