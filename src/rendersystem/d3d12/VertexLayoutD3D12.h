@@ -13,22 +13,22 @@ class RenderBase::VertexComponent;
 namespace D3D12
 {
 	class VertexLayoutD3D12 : public RenderBase::VertexLayout
-{
+	{
 
-public:
+	public:
 
-	/// constructor
-	VertexLayoutD3D12();
-	/// destructor
-	virtual ~VertexLayoutD3D12();
+		/// constructor
+		VertexLayoutD3D12();
+		/// destructor
+		virtual ~VertexLayoutD3D12();
 
-	void GenerateDeclarationD3D12();
+		void GenerateDeclarationD3D12();
 
-private:
+	private:
 
-	std::vector<D3D12_INPUT_ELEMENT_DESC> m_InputDescCollection;
+		std::vector<D3D12_INPUT_ELEMENT_DESC> m_InputDescCollection;
 
-};
+	};
 
 
 }
