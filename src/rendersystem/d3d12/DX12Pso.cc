@@ -36,16 +36,21 @@ void DX12Pso::Init(const RenderBase::PsoData& info, const std::shared_ptr<Render
 	const std::shared_ptr<DX12RootSignature>& pRoot = std::static_pointer_cast<DX12RootSignature>(pSignature);
 	psoDesc.pRootSignature = pRoot->GetRootSignature();
 
-	std::string vs, ps;
-	_DecodeShader(info.vsCode, vs);
-	_DecodeShader(info.psCode, ps);
+// 	std::string vs, ps;
+// 	_DecodeShader(info.vsCode, vs);
+// 	_DecodeShader(info.psCode, ps);
+// 
+// 	psoDesc.VS.pShaderBytecode = vs.c_str();
+// 	psoDesc.VS.BytecodeLength  = vs.length();
+// 	psoDesc.PS.pShaderBytecode = ps.c_str();
+// 	psoDesc.PS.BytecodeLength  = ps.length();
 
-	psoDesc.VS.pShaderBytecode = vs.c_str();
-	psoDesc.VS.BytecodeLength  = vs.length();
-	psoDesc.PS.pShaderBytecode = ps.c_str();
-	psoDesc.PS.BytecodeLength  = ps.length();
+	psoDesc.VS.pShaderBytecode = info.vsByteCode;
+	psoDesc.VS.BytecodeLength = info.vsLength;
+	psoDesc.PS.pShaderBytecode = info.psByteCode;
+	psoDesc.PS.BytecodeLength = info.psLength;
 
-	psoDesc.RasterizerState = _CreateRasterzerDesc(info);
+
 
 	if (info.renderBlendState.m_alphaBlendEnable[0])
 	{
@@ -56,16 +61,19 @@ void DX12Pso::Init(const RenderBase::PsoData& info, const std::shared_ptr<Render
 		psoDesc.BlendState = CD3DX12_BLEND_DESC(D3D12_DEFAULT);
 	}
 
+	//psoDesc.RasterizerState = _CreateRasterzerDesc(info);
+	psoDesc.RasterizerState = CD3DX12_RASTERIZER_DESC(D3D12_DEFAULT);
 	psoDesc.DepthStencilState = _CreateDepthStencilDesc(info);
 	psoDesc.SampleMask = UINT_MAX;
 	psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
 	psoDesc.NumRenderTargets = 1;
-	psoDesc.RTVFormats[0] = D3D12Types::AsD3D12PixelFormat(info.rtvFormat);
-	psoDesc.SampleDesc.Count = RenderDeviceD3D12::Instance()->GetAAType();
-	psoDesc.SampleDesc.Quality = RenderDeviceD3D12::Instance()->GetAAQuality();
-	psoDesc.DSVFormat = DXGI_FORMAT_D24_UNORM_S8_UINT;
-	psoDesc.NodeMask = 0;
+	psoDesc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;// D3D12Types::AsD3D12PixelFormat(info.rtvFormat);
+	psoDesc.SampleDesc.Count = 1;// RenderDeviceD3D12::Instance()->GetAAType();
+	//psoDesc.SampleDesc.Quality = RenderDeviceD3D12::Instance()->GetAAQuality();
+	//psoDesc.DSVFormat = DXGI_FORMAT_D24_UNORM_S8_UINT;
+	//psoDesc.NodeMask = 0;
 	psoDesc.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;
+	//psoDesc.InputLayout = {(,)}
 
 	ID3D12Device* pDevice = RenderDeviceD3D12::Instance()->GetDevice();
 	HRESULT hr = pDevice->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&m_PipelineState));

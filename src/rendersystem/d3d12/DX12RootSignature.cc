@@ -64,8 +64,19 @@ void DX12RootSignature::Init(const RenderBase::SignatureInfo& info)
 	}
 
 	// A root signature is an array of root parameters.
-	CD3DX12_ROOT_SIGNATURE_DESC rootSigDesc(rootParamList.size(), &(*rootParamList.cbegin()),
-											(UINT)samplerList.size(), &(*samplerList.cbegin()),
+	const D3D12_ROOT_PARAMETER* rootparam = nullptr;
+	const D3D12_STATIC_SAMPLER_DESC* staticsampler = nullptr;
+	if (rootParamList.size()!=0)
+	{
+		rootparam = &(*rootParamList.cbegin());
+	}
+	if (samplerList.size() != 0)
+	{
+		staticsampler = &(*samplerList.cbegin());
+
+	}
+	CD3DX12_ROOT_SIGNATURE_DESC rootSigDesc(rootParamList.size(), rootparam,
+											(UINT)samplerList.size(), staticsampler,
 										    D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT);
 
 	// create a root signature with a single slot which points to a descriptor range consisting of a single constant buffer
@@ -96,6 +107,7 @@ void DX12RootSignature::Init(const RenderBase::SignatureInfo& info)
 
 	if (errorBlob != NULL)
 	{
+		char* errorChar = (char*)errorBlob->GetBufferPointer();
 		errorBlob->Release();
 	}
 	

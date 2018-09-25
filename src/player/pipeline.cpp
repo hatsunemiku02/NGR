@@ -1,5 +1,6 @@
 #include "pipeline.h"
 #include "d3d12/DescriptorHeap.h"
+#include "d3d12/VertexBufferD3D12.h"
 
 pipeline::pipeline()
 {
@@ -37,17 +38,32 @@ void pipeline::Reset()
 
 	m_CommandList->GetCommandList()->OMSetRenderTargets(1, &cpuhandle->handle, FALSE, nullptr);
 
-	const float clearColor[] = { 1.0f, 0.2f, 0.4f, 1.0f };
+	const float clearColor[] = { 0.0f, 0.2f, 0.4f, 1.0f };
 	m_CommandList->GetCommandList()->ClearRenderTargetView(cpuhandle->handle, clearColor, 0, nullptr);
 
 }
 
+void pipeline::RenderOneItem(const std::shared_ptr<RenderObj>& obj)
+{
+	m_CommandList->GetCommandList()->SetGraphicsRootSignature(obj->m_pRootSig->GetRootSignature());
+	m_CommandList->GetCommandList()->SetPipelineState(obj->m_pPipeStateObj->GetPso());
+
+
+	m_CommandList->GetCommandList()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+	m_CommandList->GetCommandList()->IASetVertexBuffers(0, 1, &obj->m_pPrimitiveGroup->GetVertexBuffer()->GetView());
+
+	m_CommandList->GetCommandList()->DrawInstanced(3, 1, 0, 0);
+}
+
 void pipeline::Render()
 {
+	for (auto renderobj : m_RenderList)
+	{
+		RenderOneItem(renderobj);
+	}
 	// Indicate that the back buffer will now be used to present.
 	m_CommandList->GetCommandList()->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(m_pViewPort->GetCurrentRT(), D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT));
-
-	
 
 	// Execute the command list.
 	m_CommandList->ExecuteCommandList();

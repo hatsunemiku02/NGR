@@ -1,6 +1,8 @@
 
 #include "config/RenderDeviceConfig.h"
 #include "d3d12/VertexBufferD3D12.h"
+#include "d3d12/DX12Pso.h"
+#include "d3d12/DX12RootSignature.h"
 #include "Test_Vert.h"
 #include "RenderObj.h"
 #include "ViewPort.h"
@@ -16,6 +18,7 @@
 
 #include "pipeline.h"
 #include "RenderTarget.h"
+#include "TestShader.h"
 
 #define MAX_LOADSTRING 100
 
@@ -57,7 +60,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	}
 	
 
-	HACCEL hAccelTable = LoadAccelerators(hInstance, "gogo");
+	HACCEL hAccelTable = LoadAccelerators(hInstance, L"gogo");
 
 	MSG msg;
 
@@ -70,6 +73,43 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	testVert.SetupVertData();
 
 	std::shared_ptr<D3D12::PrimitiveGroupD3D12> pPG12 = std::make_shared<D3D12::PrimitiveGroupD3D12>();
+	pPG12->LoadBuffers(g_pResourceCmdList, testVert.m_pData, nullptr);
+
+	TestShader testShader;
+	testShader.Init();
+
+	RenderBase::PsoData psoData;
+
+	RenderBase::VertexLayoutDesc vertLayoutDesc;
+	vertLayoutDesc.name = "POSITION";
+	vertLayoutDesc.offset = 0;
+	vertLayoutDesc.si = 0;
+	psoData.vertexLayout.push_back(vertLayoutDesc);
+	RenderBase::DeviceBlendState blendState;
+	psoData.renderBlendState = blendState;
+	RenderBase::DeviceRasterizerState rasterState;
+	psoData.renderRasterizerState = rasterState;
+	RenderBase::DeviceDepthAndStencilState dsState;
+	psoData.renderDepthStencilState = dsState;
+	psoData.rtvFormat = RenderBase::PixelFormat::A8R8G8B8;
+
+	CD3DX12_SHADER_BYTECODE vs = CD3DX12_SHADER_BYTECODE(testShader.mVertexShader);
+	psoData.vsByteCode = const_cast<void*>(vs.pShaderBytecode);
+	psoData.vsLength = vs.BytecodeLength;
+
+	CD3DX12_SHADER_BYTECODE ps = CD3DX12_SHADER_BYTECODE(testShader.mPixelShader);
+	psoData.psByteCode = const_cast<void*>(ps.pShaderBytecode);
+	psoData.psLength = ps.BytecodeLength;
+
+
+	RenderBase::SignatureInfo sigInfo;
+	std::shared_ptr<RenderBase::RootSignature> pRS = std::make_shared<D3D12::DX12RootSignature>();
+	pRS->Init(sigInfo);
+
+	std::shared_ptr<D3D12::DX12Pso> dx12pso = std::make_shared<D3D12::DX12Pso>();
+
+	dx12pso->Init(psoData, pRS);
+
 	g_pResourceCmdList->ExecuteCommandList();
 	g_pResourceCmdList->WaitForExecution();
 
@@ -82,6 +122,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	std::shared_ptr<RenderObj> pObj = std::make_shared<RenderObj>();
 	pObj->Init(pPG12);
+	pObj->m_pPipeStateObj = dx12pso;
+	pObj->m_pRootSig = std::static_pointer_cast<D3D12::DX12RootSignature>(pRS);
 	renderPipeline->AddRenderObj(pObj);
 
 	// 主消息循环: 
@@ -89,9 +131,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	{
 		renderPipeline->Reset();
 		renderPipeline->Render();
-		// 		gDevice.BeforeRender();
-		// 		gDevice.DrawInstance(3, 1, 0, 0);
-		// 		gDevice.AfterRender();
+
 		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
 		{
 			TranslateMessage(&msg);
@@ -118,7 +158,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 	wcex.cbClsExtra = 0;
 	wcex.cbWndExtra = 0;
 	wcex.hInstance = hInstance;
-	wcex.hIcon = LoadIcon(hInstance, "gogo");
+	wcex.hIcon = LoadIcon(hInstance, L"gogo");
 	wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
 	wcex.lpszMenuName = L"testplayer";
@@ -177,18 +217,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_COMMAND:
 	{
 		int wmId = LOWORD(wParam);
-		// 分析菜单选择: 
-// 		switch (wmId)
-// 		{
-// 		case IDM_ABOUT:
-// 			DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-// 			break;
-// 		case IDM_EXIT:
-// 			DestroyWindow(hWnd);
-// 			break;
-// 		default:
-// 			return DefWindowProc(hWnd, message, wParam, lParam);
-// 		}
 	}
 	break;
 	case WM_PAINT:

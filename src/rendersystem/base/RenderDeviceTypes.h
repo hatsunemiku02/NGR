@@ -499,6 +499,10 @@ namespace RenderBase
 
 		std::string					vsCode;
 		std::string					psCode;
+		void* vsByteCode;
+		void* psByteCode;
+		uint  vsLength;
+		uint  psLength;
 		std::vector<VertexLayoutDesc>	vertexLayout;
 		DeviceBlendState				renderBlendState;
 		DeviceRasterizerState			renderRasterizerState;

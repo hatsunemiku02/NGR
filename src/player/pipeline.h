@@ -20,6 +20,7 @@ public:
 	void ResetRenderList();
 
 	void Reset();
+	void RenderOneItem(const std::shared_ptr<RenderObj>& obj);
 	void Render();
 protected:
 	std::unique_ptr<D3D12::GraphicCommandList> m_CommandList;
