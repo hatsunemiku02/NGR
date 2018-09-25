@@ -5,7 +5,7 @@
 
 struct Vertex
 {
-	Math::float4 position;
+	Math::float3 position;
 };
 
 class TestVert
@@ -24,7 +24,7 @@ void TestVert::SetupVertData()
 	m_pData = std::make_shared<RenderBase::VertexBufferData>();
 	m_pData->topology = RenderBase::PrimitiveTopology::TriangleList;
 	m_pData->vertexCount = 3;
-	m_pData->vertex.vertexComponents.emplace_back(RenderBase::VertexComponent::Position, 0, RenderBase::VertexComponent::Float4, 0);
+	m_pData->vertex.vertexComponents.emplace_back(RenderBase::VertexComponent::Position, 0, RenderBase::VertexComponent::Float3, 0);
 	m_pData->vertex.vertexComponentStreams.emplace_back();
 	m_pVert = new Math::float3[3]();
 	m_pVert[0].x() = 0.0f;

@@ -1,13 +1,14 @@
 #pragma once
 #include "d3d12/RenderDeviceD3D12.h"
 #include "d3d12/DescriptorHeap.h"
+#include "base/PixelFormat.h"
 class ViewPortD3D12
 {
 public:
 	ViewPortD3D12();
 	virtual ~ViewPortD3D12();
 
-	void Init(UINT width, UINT height, HWND hwnd);
+	void Init(RenderBase::PixelFormat::Code format,UINT width, UINT height, HWND hwnd);
 
 	CD3DX12_VIEWPORT& GetViewPort()
 	{
@@ -17,6 +18,12 @@ public:
 	{
 		return m_ScissorRect;
 	}
+
+	RenderBase::PixelFormat::Code GetPixelFormat()
+	{
+		return m_PixelFormat;
+	}
+
 	IDXGISwapChain1* GetSwapChain()
 	{
 		return m_pViewPortSwapChain;
@@ -42,5 +49,6 @@ protected:
 	IDXGISwapChain3*	m_pViewPortSwapChain;
 	ID3D12Resource *   m_pRenderTarget[2];
 	D3D12::CPUHandle*   m_pRenderTargetHandle[2];
+	RenderBase::PixelFormat::Code m_PixelFormat;
 private:
 };

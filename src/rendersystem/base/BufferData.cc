@@ -152,14 +152,14 @@ namespace RenderBase
 	void DirectCopyVertexDataToGraphicBuffer(const VertexBufferData& source, void* to, int vertexByteSize)
 	{
 		const VertexStreams& dataStreams = source.vertex.vertexComponentStreams;
-		if (source.vertex.vertexComponentStreams.size() == 1
-			&& source.vertex.vertexComponentStreams[0].elemSizeInByte == vertexByteSize
-			&& source.vertex.vertexComponentStreams[0].data)
-		{
-			memcpy(dataStreams[0].data, to, vertexByteSize * source.vertexCount);
-			//Memory::Copy(dataStreams[0].data,to, vertexByteSize * source.vertexCount);
-		}
-		else
+// 		if (source.vertex.vertexComponentStreams.size() == 1
+// 			&& source.vertex.vertexComponentStreams[0].elemSizeInByte == vertexByteSize
+// 			&& source.vertex.vertexComponentStreams[0].data)
+// 		{
+// 			memcpy(dataStreams[0].data, to, vertexByteSize * source.vertexCount);
+// 			//Memory::Copy(dataStreams[0].data,to, vertexByteSize * source.vertexCount);
+// 		}
+// 		else
 		{
 			for (int i = 0; i < dataStreams.size(); ++i)
 			{

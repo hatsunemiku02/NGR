@@ -78,54 +78,62 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	TestShader testShader;
 	testShader.Init();
 
-	RenderBase::PsoData psoData;
+//	RenderBase::PsoData psoData;
 
-	RenderBase::VertexLayoutDesc vertLayoutDesc;
-	vertLayoutDesc.name = "POSITION";
-	vertLayoutDesc.offset = 0;
-	vertLayoutDesc.si = 0;
-	psoData.vertexLayout.push_back(vertLayoutDesc);
-	RenderBase::DeviceBlendState blendState;
-	psoData.renderBlendState = blendState;
-	RenderBase::DeviceRasterizerState rasterState;
-	psoData.renderRasterizerState = rasterState;
-	RenderBase::DeviceDepthAndStencilState dsState;
-	psoData.renderDepthStencilState = dsState;
-	psoData.rtvFormat = RenderBase::PixelFormat::A8R8G8B8;
+// 	RenderBase::VertexLayoutDesc vertLayoutDesc;
+// 	vertLayoutDesc.name = "POSITION";
+// 	vertLayoutDesc.offset = 0;
+// 	vertLayoutDesc.si = 0;
+// 	psoData.vertexLayout.push_back(vertLayoutDesc);
+// 	psoData.pVertexLayout = pPG12->GetVertexBuffer()->GetVertexLayout();
+// 	RenderBase::DeviceBlendState blendState;
+// 	psoData.renderBlendState = blendState;
+// 	RenderBase::DeviceRasterizerState rasterState;
+// 	psoData.renderRasterizerState = rasterState;
+// 	RenderBase::DeviceDepthAndStencilState dsState;
+// 	psoData.renderDepthStencilState = dsState;
+// 	psoData.rtvFormat = RenderBase::PixelFormat::A8R8G8B8;
 
 	CD3DX12_SHADER_BYTECODE vs = CD3DX12_SHADER_BYTECODE(testShader.mVertexShader);
-	psoData.vsByteCode = const_cast<void*>(vs.pShaderBytecode);
-	psoData.vsLength = vs.BytecodeLength;
+// 	psoData.vsByteCode = const_cast<void*>(vs.pShaderBytecode);
+// 	psoData.vsLength = vs.BytecodeLength;
 
 	CD3DX12_SHADER_BYTECODE ps = CD3DX12_SHADER_BYTECODE(testShader.mPixelShader);
-	psoData.psByteCode = const_cast<void*>(ps.pShaderBytecode);
-	psoData.psLength = ps.BytecodeLength;
+// 	psoData.psByteCode = const_cast<void*>(ps.pShaderBytecode);
+// 	psoData.psLength = ps.BytecodeLength;
 
 
-	RenderBase::SignatureInfo sigInfo;
-	std::shared_ptr<RenderBase::RootSignature> pRS = std::make_shared<D3D12::DX12RootSignature>();
-	pRS->Init(sigInfo);
+// 	RenderBase::SignatureInfo sigInfo;
+// 	std::shared_ptr<RenderBase::RootSignature> pRS = std::make_shared<D3D12::DX12RootSignature>();
+// 	pRS->Init(sigInfo);
 
-	std::shared_ptr<D3D12::DX12Pso> dx12pso = std::make_shared<D3D12::DX12Pso>();
+// 	std::shared_ptr<D3D12::DX12Pso> dx12pso = std::make_shared<D3D12::DX12Pso>();
+// 
+// 	dx12pso->Init(psoData, pRS);;
 
-	dx12pso->Init(psoData, pRS);
+ 	std::shared_ptr<Material> mat = std::make_shared<Material>();
+ 	mat->SetShader(const_cast<void*>(vs.pShaderBytecode), vs.BytecodeLength, const_cast<void*>(ps.pShaderBytecode), ps.BytecodeLength);
+
+	
 
 	g_pResourceCmdList->ExecuteCommandList();
 	g_pResourceCmdList->WaitForExecution();
 
 	Pipeline* renderPipeline = new Pipeline();
+
 	std::shared_ptr<ViewPortD3D12> pViewPort = std::make_shared<ViewPortD3D12>();
-	pViewPort->Init( 800, 600, hwnd);
-	std::shared_ptr<RenderTarget> pRenderTarget = std::make_shared<RenderTarget>();
-	pRenderTarget->Init(pViewPort);
-	renderPipeline->SetViewPort(pViewPort);
+	pViewPort->Init(RenderBase::PixelFormat::A4R4G4B4, 800, 600, hwnd);
 
 	std::shared_ptr<RenderObj> pObj = std::make_shared<RenderObj>();
 	pObj->Init(pPG12);
-	pObj->m_pPipeStateObj = dx12pso;
-	pObj->m_pRootSig = std::static_pointer_cast<D3D12::DX12RootSignature>(pRS);
-	renderPipeline->AddRenderObj(pObj);
+	pObj->m_pMaterial = mat;
+	pObj->GenerateInternal(pViewPort);
+// 	pObj->m_pPipeStateObj = dx12pso;
+// 	pObj->m_pRootSig = std::static_pointer_cast<D3D12::DX12RootSignature>(pRS);
+	renderPipeline->SetViewPort(pViewPort);
 
+	renderPipeline->AddRenderObj(pObj);
+	
 	// 主消息循环: 
 	while (GetMessage(&msg, nullptr, 0, 0))
 	{

@@ -31,7 +31,7 @@ void DX12Pso::Init(const RenderBase::PsoData& info, const std::shared_ptr<Render
 	
 	std::shared_ptr<D3D12::VertexLayoutD3D12> dx12layout = std::static_pointer_cast<D3D12::VertexLayoutD3D12>(info.pVertexLayout);
 	std::vector<D3D12_INPUT_ELEMENT_DESC>& inputList = dx12layout->GetHandle();
-
+	//std::vector<D3D12_INPUT_ELEMENT_DESC> inputList = _CreateInput(info);
 	psoDesc.InputLayout.NumElements = inputList.size();
 	psoDesc.InputLayout.pInputElementDescs = &(*inputList.cbegin());
 
@@ -65,16 +65,19 @@ void DX12Pso::Init(const RenderBase::PsoData& info, const std::shared_ptr<Render
 
 	//psoDesc.RasterizerState = _CreateRasterzerDesc(info);
 	psoDesc.RasterizerState = CD3DX12_RASTERIZER_DESC(D3D12_DEFAULT);
-	psoDesc.DepthStencilState = _CreateDepthStencilDesc(info);
+	//psoDesc.DepthStencilState = _CreateDepthStencilDesc(info);
+	psoDesc.DepthStencilState.DepthEnable = FALSE;
+	psoDesc.DepthStencilState.StencilEnable = FALSE;
 	psoDesc.SampleMask = UINT_MAX;
 	psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
 	psoDesc.NumRenderTargets = 1;
 	psoDesc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;// D3D12Types::AsD3D12PixelFormat(info.rtvFormat);
 	psoDesc.SampleDesc.Count = 1;// RenderDeviceD3D12::Instance()->GetAAType();
+	psoDesc.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ALL;
 	//psoDesc.SampleDesc.Quality = RenderDeviceD3D12::Instance()->GetAAQuality();
 	//psoDesc.DSVFormat = DXGI_FORMAT_D24_UNORM_S8_UINT;
 	//psoDesc.NodeMask = 0;
-	psoDesc.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;
+	//psoDesc.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;
 	//psoDesc.InputLayout = {(,)}
 
 	ID3D12Device* pDevice = RenderDeviceD3D12::Instance()->GetDevice();
