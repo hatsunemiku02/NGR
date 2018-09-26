@@ -16,7 +16,7 @@ public:
 
 	virtual ~DX12ConstantBuffer();
 
-	virtual void CreateBuffer(SizeT nSize, const RenderBase::BufferData& desc);
+	virtual void CreateBuffer(SizeT nSize);
 
 	virtual void UpdateBuffer(const RenderBase::DataStream& data);
 

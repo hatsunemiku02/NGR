@@ -12,6 +12,7 @@ public:
 	~RenderObj();
 
 	void Init(const std::shared_ptr<D3D12::PrimitiveGroupD3D12>& pg);
+	void UpdatePosBuffer(const RenderBase::DataStream& posBuffer);
 
 	std::shared_ptr<D3D12::DX12Pso> m_pPipeStateObj;
 	std::shared_ptr<D3D12::DX12RootSignature> m_pRootSig;
@@ -21,7 +22,7 @@ public:
 
 	void GenerateInternal(const std::shared_ptr<ViewPortD3D12>& pViewPort);
 protected:
-	
+	std::vector<D3D12::DX12ConstantBuffer> m_ConstantBuffers;
 	
 private:
 };

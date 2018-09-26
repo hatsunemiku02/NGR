@@ -1,19 +1,24 @@
 #pragma once
 #include "base/RenderDeviceTypes.h"
-
+#include "d3d12/DX12ConstantBuffer.h"
+#include <vector>
 class Material
 {
 public:
 	Material();
 	~Material();
 	
-	void SetShader(void* vs,uint vl,void* ps,uint pl);
+	void SetShaderCode(void* vs,uint vl,void* ps,uint pl);
+
+	void SetConstantBuffers(const std::vector<uint>& sizeList);
+	void UpdateConstantBuffer(int index,const RenderBase::DataStream& data);
 
 	RenderBase::PsoData GetPsoData();
 	RenderBase::SignatureInfo GetRootSigInfo();
 protected:
 	RenderBase::PsoData m_PsoData;
 	RenderBase::SignatureInfo m_SigInfo;
+	std::vector<D3D12::DX12ConstantBuffer> m_ConstantBuffers;
 };
 
 

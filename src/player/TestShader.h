@@ -1,5 +1,9 @@
 #pragma once
 const char* shadercode = "\
+cbuffer objConstantBuffer : register(b0)\
+{\
+	float4 offset;\
+};\
 struct PSInput\
 {\
 	float4 position : SV_POSITION;\
@@ -9,7 +13,7 @@ PSInput VSMain(float4 position : POSITION)\
 {\
 	PSInput result;\
 \
-	result.position = position;\
+	result.position = position + offset;\
 \
 	return result;\
 }\

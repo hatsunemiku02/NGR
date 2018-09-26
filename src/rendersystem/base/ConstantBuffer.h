@@ -13,7 +13,7 @@ public:
 
 	virtual ~ConstantBuffer();
 
-	virtual void CreateBuffer(SizeT nSize, const RenderBase::BufferData& desc) = 0;
+	virtual void CreateBuffer(SizeT nSize) = 0;
 
 	virtual void UpdateBuffer(const DataStream& data) = 0;
 

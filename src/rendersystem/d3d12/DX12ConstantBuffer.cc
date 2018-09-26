@@ -24,7 +24,7 @@ DX12ConstantBuffer::~DX12ConstantBuffer()
 	Discard();
 }
 
-void DX12ConstantBuffer::CreateBuffer(SizeT nSize, const RenderBase::BufferData& desc)
+void DX12ConstantBuffer::CreateBuffer(SizeT nSize)
 {
 	ID3D12Device* pDevice	 = RenderDeviceD3D12::Instance()->GetDevice();
 	DescriptorHeap* pCbvHeap = RenderDeviceD3D12::Instance()->GetCsuHeap();

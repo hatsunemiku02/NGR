@@ -418,7 +418,7 @@ void RenderDeviceD3D12::ChangeTexture(std::shared_ptr<Texture> srcTex, std::shar
 std::shared_ptr<ConstantBuffer> RenderDeviceD3D12::CreateConstantBuffer(SizeT nSize, const RenderBase::BufferData& desc)
 {
 	std::shared_ptr<DX12ConstantBuffer> pBuffer = std::make_shared<DX12ConstantBuffer>();// DX12ConstantBuffer::Create();
-	pBuffer->CreateBuffer(nSize, desc);
+	pBuffer->CreateBuffer(nSize);
 	return pBuffer;
 }
 
