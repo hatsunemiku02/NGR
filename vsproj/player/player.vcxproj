@@ -152,7 +152,10 @@
     <ClInclude Include="..\..\src\player\Material.h" />
     <ClInclude Include="..\..\src\player\pipeline.h" />
     <ClInclude Include="..\..\src\player\RenderObj.h" />
+    <ClInclude Include="..\..\src\player\RenderStateData.h" />
     <ClInclude Include="..\..\src\player\RenderTarget.h" />
+    <ClInclude Include="..\..\src\player\RootSigCreator.h" />
+    <ClInclude Include="..\..\src\player\ShaderDesc.h" />
     <ClInclude Include="..\..\src\player\TestShader.h" />
     <ClInclude Include="..\..\src\player\Test_Vert.h" />
     <ClInclude Include="..\..\src\player\ViewPort.h" />
@@ -163,6 +166,8 @@
     <ClCompile Include="..\..\src\player\pipeline.cpp" />
     <ClCompile Include="..\..\src\player\RenderObj.cpp" />
     <ClCompile Include="..\..\src\player\RenderTarget.cpp" />
+    <ClCompile Include="..\..\src\player\RootSigCreator.cpp" />
+    <ClCompile Include="..\..\src\player\ShaderDesc.cpp" />
     <ClCompile Include="..\..\src\player\Viewport.cpp" />
   </ItemGroup>
   <ItemGroup>
