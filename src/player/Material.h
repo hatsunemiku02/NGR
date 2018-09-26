@@ -15,6 +15,7 @@ public:
 
 	RenderBase::PsoData GetPsoData();
 	RenderBase::SignatureInfo GetRootSigInfo();
+	std::vector<D3D12::DX12ConstantBuffer>& GetConstantBuffers();
 protected:
 	RenderBase::PsoData m_PsoData;
 	RenderBase::SignatureInfo m_SigInfo;
@@ -30,4 +31,9 @@ inline RenderBase::PsoData Material::GetPsoData()
 inline RenderBase::SignatureInfo Material::GetRootSigInfo()
 {
 	return m_SigInfo;
+}
+
+inline std::vector<D3D12::DX12ConstantBuffer>& Material::GetConstantBuffers()
+{
+	return m_ConstantBuffers;
 }

@@ -34,10 +34,7 @@ struct EqualSigInfo
 			&& lhs.srvInfo.size() == rhs.srvInfo.size()
 			&& lhs.samplerInfo.size() == rhs.samplerInfo.size())
 		{
-			for ()
-			{
-
-			}
+		//¡¢
 		}
 		else
 		{
@@ -56,6 +53,7 @@ public:
 	std::shared_ptr<D3D12::DX12RootSignature> GetRootSig(const RenderBase::SignatureInfo& siginfo);
 protected:
 
-	std::unordered_map<RenderBase::SignatureInfo, std::shared_ptr<D3D12::DX12RootSignature>> m_RootSigMap;
+	//std::unordered_map<RenderBase::SignatureInfo, std::shared_ptr<D3D12::DX12RootSignature>> m_RootSigMap;
+	std::unordered_map<std::string, std::shared_ptr<D3D12::DX12RootSignature>> m_RootSigMap;
 private:
 };

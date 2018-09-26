@@ -24,6 +24,8 @@ public:
 
 	ID3D12Resource*	GetBuffer() const;
 
+	const CPUHandle& GetHandle() const;
+
 private:
 
 	ID3D12Resource*			m_pCBuffer;
@@ -35,6 +37,11 @@ inline ID3D12Resource* DX12ConstantBuffer::GetBuffer() const
 {
 	return m_pCBuffer;
 }
+inline const D3D12::CPUHandle& DX12ConstantBuffer::GetHandle() const
+{
+	return m_CpuCbv;
+}
+
 
 }
 

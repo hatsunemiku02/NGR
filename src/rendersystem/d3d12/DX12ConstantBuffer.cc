@@ -60,7 +60,7 @@ void DX12ConstantBuffer::CreateBuffer(SizeT nSize)
 
 void DX12ConstantBuffer::UpdateBuffer(const RenderBase::DataStream& data)
 {
-	memcpy(data.data, (void*)m_pMappedData, data.sizeInByte);
+	memcpy((void*)m_pMappedData,data.data , data.sizeInByte);
 }
 
 void DX12ConstantBuffer::Discard()

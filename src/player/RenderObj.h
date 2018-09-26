@@ -21,8 +21,17 @@ public:
 	std::shared_ptr<Material> m_pMaterial;
 
 	void GenerateInternal(const std::shared_ptr<ViewPortD3D12>& pViewPort);
+
+
+	const std::vector<D3D12::DX12ConstantBuffer>& GetConstantBuffers() const;
 protected:
 	std::vector<D3D12::DX12ConstantBuffer> m_ConstantBuffers;
 	
 private:
 };
+
+
+inline const std::vector<D3D12::DX12ConstantBuffer>& RenderObj::GetConstantBuffers() const
+{
+	return m_ConstantBuffers;
+}

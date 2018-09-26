@@ -35,6 +35,9 @@ void RenderObj::GenerateInternal(const std::shared_ptr<ViewPortD3D12>& pViewPort
 	psoData.rtvFormat = pViewPort->GetPixelFormat();
 
 	RenderBase::SignatureInfo sigInfo = m_pMaterial->GetRootSigInfo();
+	//insert position
+	sigInfo.cbvInfo.insert(sigInfo.cbvInfo.begin(), POSTION_BUFFER_IDX);
+
 	m_pRootSig = std::make_shared<D3D12::DX12RootSignature>();
 	m_pRootSig->Init(sigInfo);
 

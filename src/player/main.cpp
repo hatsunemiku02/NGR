@@ -3,6 +3,7 @@
 #include "d3d12/VertexBufferD3D12.h"
 #include "d3d12/DX12Pso.h"
 #include "d3d12/DX12RootSignature.h"
+#include "math/float4.h"
 #include "Test_Vert.h"
 #include "RenderObj.h"
 #include "ViewPort.h"
@@ -78,8 +79,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	CD3DX12_SHADER_BYTECODE vs = CD3DX12_SHADER_BYTECODE(testShader.mVertexShader);
 	CD3DX12_SHADER_BYTECODE ps = CD3DX12_SHADER_BYTECODE(testShader.mPixelShader);
 
+
  	std::shared_ptr<Material> mat = std::make_shared<Material>();
  	mat->SetShaderCode(const_cast<void*>(vs.pShaderBytecode), vs.BytecodeLength, const_cast<void*>(ps.pShaderBytecode), ps.BytecodeLength);
+
 
 	g_pResourceCmdList->ExecuteCommandList();
 	g_pResourceCmdList->WaitForExecution();
@@ -92,6 +95,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	std::shared_ptr<RenderObj> pObj = std::make_shared<RenderObj>();
 	pObj->Init(pPG12);
 	pObj->m_pMaterial = mat;
+
+	Math::float4 offset = Math::float4(1, 1, 1, 0);
+	RenderBase::DataStream datastream;
+	datastream.data = &offset;
+	datastream.sizeInByte = sizeof(offset);
+	pObj->UpdatePosBuffer(datastream);
 	pObj->GenerateInternal(pViewPort);
 
 	renderPipeline->SetViewPort(pViewPort);

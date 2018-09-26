@@ -32,6 +32,12 @@ void Material::SetConstantBuffers(const std::vector<uint>& sizeList)
 	{
 		m_ConstantBuffers[i].CreateBuffer(sizeList[i]);
 	}
+	m_SigInfo.cbvInfo.resize(sizeList.size());
+	for (int i = 0; i < sizeList.size(); i++)
+	{
+		m_SigInfo.cbvInfo[i] = i;
+	}
+	
 }
 
 void Material::UpdateConstantBuffer(int index, const RenderBase::DataStream& data)
