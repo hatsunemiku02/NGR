@@ -43,7 +43,7 @@ void Pipeline::Reset()
 
 }
 
-void Pipeline::RenderOneItem(const std::shared_ptr<RenderObj>& obj)
+void Pipeline::SetMaterial(const std::shared_ptr<RenderObj>& obj)
 {
 	m_CommandList->GetCommandList()->SetGraphicsRootSignature(obj->m_pRootSig->GetRootSignature());
 	m_CommandList->GetCommandList()->SetPipelineState(obj->m_pPipeStateObj->GetPso());
@@ -55,12 +55,21 @@ void Pipeline::RenderOneItem(const std::shared_ptr<RenderObj>& obj)
 
 	for (int n = 0; n < obj->m_pMaterial->GetConstantBuffers().size(); n++)
 	{
-		m_CommandList->GetCommandList()->SetGraphicsRootConstantBufferView(n+ obj->GetConstantBuffers().size(), obj->m_pMaterial->GetConstantBuffers()[n].GetBuffer()->GetGPUVirtualAddress());
+		m_CommandList->GetCommandList()->SetGraphicsRootConstantBufferView(n + obj->GetConstantBuffers().size(), obj->m_pMaterial->GetConstantBuffers()[n].GetBuffer()->GetGPUVirtualAddress());
 	}
+}
 
-
+void Pipeline::SetVertexBuffer(const std::shared_ptr<RenderObj>& obj)
+{
 	m_CommandList->GetCommandList()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	m_CommandList->GetCommandList()->IASetVertexBuffers(0, 1, &obj->m_pPrimitiveGroup->GetVertexBuffer()->GetView());
+}
+
+void Pipeline::RenderOneItem(const std::shared_ptr<RenderObj>& obj)
+{
+	
+	SetMaterial(obj);
+	SetVertexBuffer(obj);
 
 	m_CommandList->GetCommandList()->DrawInstanced(3, 1, 0, 0);
 }

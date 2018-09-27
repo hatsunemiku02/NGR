@@ -2,7 +2,7 @@
 #include "IndexBufferD3D12.h"
 #include "RenderDeviceD3D12.h"
 #include "D3D12Types.h"
-#include "CommandQueue.h"
+
 
 #if RENDERDEVICE_D3D12
 
@@ -23,7 +23,7 @@ IndexBufferD3D12::~IndexBufferD3D12()
 	Discard();
 }
 
-void IndexBufferD3D12::CreateIndexBuffer(const std::shared_ptr<RenderBase::IndexBufferData>& ibd, std::shared_ptr<IndexBufferD3D12>& out)
+void IndexBufferD3D12::CreateIndexBuffer(const std::shared_ptr<GraphicCommandList>& pCmdList, const std::shared_ptr<RenderBase::IndexBufferData>& ibd, std::shared_ptr<IndexBufferD3D12>& out)
 {
 	out = std::make_shared<IndexBufferD3D12>();// IndexBufferD3D12::Create();
 	DWORD d3dIndexBufferSize = IndexBufferData::SizeOf(ibd->indexType) * ibd->indexCount;
@@ -34,7 +34,7 @@ void IndexBufferD3D12::CreateIndexBuffer(const std::shared_ptr<RenderBase::Index
 	out->_SetUsage(ibd->usage);
 
 	ID3D12Device* pDevice = RenderDeviceD3D12::Instance()->GetDevice();
-	ID3D12GraphicsCommandList* pCommandList = RenderDeviceD3D12::Instance()->GetGraphicQueue()->GetCommandList();
+	ID3D12GraphicsCommandList* pCommandList = pCmdList->GetCommandList();
 
 	ID3D12Resource* pIndexBuffer = nullptr;
 	ID3D12Resource* pUploadBuffer = nullptr;

@@ -96,7 +96,7 @@ namespace RenderBase
 
 #if RENDERDEVICE_D3D12
 		m_renderDevice = std::make_shared<RenderDeviceD3D12>();
-	    std::static_pointer_cast<RenderDeviceD3D12>(m_renderDevice)->SetMainWindowHandle(m_mainHWND);
+	//    std::static_pointer_cast<RenderDeviceD3D12>(m_renderDevice)->SetMainWindowHandle(m_mainHWND);
 #endif
 
 #if RENDERDEVICE_NULL
@@ -142,7 +142,7 @@ namespace RenderBase
 #elif RENDERDEVICE_D3D12
 		if (m_renderDevice)
 		{
-			std::static_pointer_cast<RenderDeviceD3D12>(m_renderDevice)->SetMainWindowHandle(m_mainHWND);
+	//		std::static_pointer_cast<RenderDeviceD3D12>(m_renderDevice)->SetMainWindowHandle(m_mainHWND);
 		}
 #endif
 	}

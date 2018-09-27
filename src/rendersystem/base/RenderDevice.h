@@ -98,84 +98,84 @@ public:
 	// 获取当前硬件的性能参数
 	virtual const GraphicCardCapability& GetGraphicCardCapability() = 0;
 
-	virtual RenderWindow* CreateRenderWindow(WindHandle wnd) = 0;
-
-	virtual void DestroyRenderWindow(const std::shared_ptr<RenderWindow>& rw) = 0;
+// 	virtual RenderWindow* CreateRenderWindow(WindHandle wnd) = 0;
+// 
+// 	virtual void DestroyRenderWindow(const std::shared_ptr<RenderWindow>& rw) = 0;
 	
 	/// Create true primitive group
-	virtual std::shared_ptr<PrimitiveGroup> CreatePrimitiveGroup(const std::shared_ptr<VertexBufferData>& vbd, const std::shared_ptr<IndexBufferData>& ibd) = 0;
-	virtual void ChangePrimitiveGroup(const std::shared_ptr<PrimitiveGroup>& group,const std::shared_ptr<RenderBase::VertexBufferData>& vbd, const std::shared_ptr<RenderBase::IndexBufferData>& ibd = nullptr) = 0;
-	virtual void UpdateVertexBuffer(const std::shared_ptr<PrimitiveGroup>& pg, const DataStream& data) = 0;
-	virtual void UpdateIndexBuffer(const std::shared_ptr<PrimitiveGroup>& pg, const DataStream& data) = 0;
+// 	virtual std::shared_ptr<PrimitiveGroup> CreatePrimitiveGroup(const std::shared_ptr<VertexBufferData>& vbd, const std::shared_ptr<IndexBufferData>& ibd) = 0;
+// 	virtual void ChangePrimitiveGroup(const std::shared_ptr<PrimitiveGroup>& group,const std::shared_ptr<RenderBase::VertexBufferData>& vbd, const std::shared_ptr<RenderBase::IndexBufferData>& ibd = nullptr) = 0;
+// 	virtual void UpdateVertexBuffer(const std::shared_ptr<PrimitiveGroup>& pg, const DataStream& data) = 0;
+// 	virtual void UpdateIndexBuffer(const std::shared_ptr<PrimitiveGroup>& pg, const DataStream& data) = 0;
+// 
+// 	virtual void ChangeTexture(std::shared_ptr<Texture> srcTex, std::shared_ptr<Texture> destTex) = 0;
+// 	virtual void UpdateTexture(RenderBase::Texture::UpdateFunction texUpdateFunc,std::shared_ptr<Texture> destTex, void* tag) = 0;
+// 	virtual void UpdateTexture(std::shared_ptr<Texture> srcTex, std::shared_ptr<Texture> destTex) = 0;
+// 	virtual const std::shared_ptr<GPUProgram> CreateRenderGPUProgram(const std::shared_ptr<GPUProgram>& srcGPUProgram) = 0;
+// 	virtual const std::shared_ptr<RenderStateDesc> CreateRenderState(const std::shared_ptr<RenderStateDesc>& state) = 0;
+// 	virtual const std::shared_ptr<Texture> CreateRenderSideTexture(const std::shared_ptr<Texture>&  tex) = 0;
+// 	virtual const std::shared_ptr<RenderTarget> CreateRenderTarget(const std::shared_ptr<RenderTarget>& rt) = 0;
+// 	virtual const std::shared_ptr<MultipleRenderTarget> CreateMultipleRenderTarget(const std::shared_ptr<MultipleRenderTarget>& mrt) = 0;
+// 
+// 	virtual void SetBlendState(const DeviceBlendState& state) = 0;
+// 	virtual void SetRasterState(const DeviceRasterizerState& state) = 0;
+// 	virtual void SetDepthAndStencilState(const DeviceDepthAndStencilState& state) = 0;
+// 	virtual void SetTextureSamplerState(const DeviceSamplerState& state) = 0;
+// 	virtual void SetTexture(const  std::shared_ptr<Texture>& tex) = 0;
+// 	virtual void SetRenderTarget(const std::shared_ptr<RenderTarget>& rt, bool bGammaToLinear = false) = 0;
+// 	virtual void SetMultipleRenderTarget(const std::shared_ptr<MultipleRenderTarget>& mrt, bool resume = false) = 0;
+// 	virtual void DisableRenderTarget(int index) = 0;
 
-	virtual void ChangeTexture(std::shared_ptr<Texture> srcTex, std::shared_ptr<Texture> destTex) = 0;
-	virtual void UpdateTexture(RenderBase::Texture::UpdateFunction texUpdateFunc,std::shared_ptr<Texture> destTex, void* tag) = 0;
-	virtual void UpdateTexture(std::shared_ptr<Texture> srcTex, std::shared_ptr<Texture> destTex) = 0;
-	virtual const std::shared_ptr<GPUProgram> CreateRenderGPUProgram(const std::shared_ptr<GPUProgram>& srcGPUProgram) = 0;
-	virtual const std::shared_ptr<RenderStateDesc> CreateRenderState(const std::shared_ptr<RenderStateDesc>& state) = 0;
-	virtual const std::shared_ptr<Texture> CreateRenderSideTexture(const std::shared_ptr<Texture>&  tex) = 0;
-	virtual const std::shared_ptr<RenderTarget> CreateRenderTarget(const std::shared_ptr<RenderTarget>& rt) = 0;
-	virtual const std::shared_ptr<MultipleRenderTarget> CreateMultipleRenderTarget(const std::shared_ptr<MultipleRenderTarget>& mrt) = 0;
 
-	virtual void SetBlendState(const DeviceBlendState& state) = 0;
-	virtual void SetRasterState(const DeviceRasterizerState& state) = 0;
-	virtual void SetDepthAndStencilState(const DeviceDepthAndStencilState& state) = 0;
-	virtual void SetTextureSamplerState(const DeviceSamplerState& state) = 0;
-	virtual void SetTexture(const  std::shared_ptr<Texture>& tex) = 0;
-	virtual void SetRenderTarget(const std::shared_ptr<RenderTarget>& rt, bool bGammaToLinear = false) = 0;
-	virtual void SetMultipleRenderTarget(const std::shared_ptr<MultipleRenderTarget>& mrt, bool resume = false) = 0;
-	virtual void DisableRenderTarget(int index) = 0;
-
-
-	virtual std::shared_ptr<RootSignature> CreateRootSignature(const SignatureInfo& info);
-	virtual std::shared_ptr<Pso>			CreatePso(const PsoData& info, const std::shared_ptr<RootSignature>& rs);
-
-	virtual void SetVertexShaderConstantVectorF(const int& reg, float* val, const int& vec4count) = 0;
-	virtual void SetPixelShaderConstantVectorF(const int& reg, float* val, const int& vec4count) = 0;
-
-	virtual void SetVertexShaderConstantFloat(const int& reg, float* val) = 0;
-	virtual void SetPixelShaderConstantFloat(const int& reg, float* val) = 0;
-
-	virtual void SetVertexShaderConstantMatrixF(const int& reg, float* val, const int& matrixCount) = 0;
-	virtual void SetPixelShaderConstantMatrixF(const int& reg, float* val, const int& matrixCount) = 0;
-
-	virtual void ResetCommandList(const std::shared_ptr<Pso>& pso);
-	virtual void SetPsoRootSignature(const std::shared_ptr<Pso>& pso, const std::shared_ptr<RootSignature>& rs);
+// 	virtual std::shared_ptr<RootSignature> CreateRootSignature(const SignatureInfo& info);
+// 	virtual std::shared_ptr<Pso>			CreatePso(const PsoData& info, const std::shared_ptr<RootSignature>& rs);
+// 
+// 	virtual void SetVertexShaderConstantVectorF(const int& reg, float* val, const int& vec4count) = 0;
+// 	virtual void SetPixelShaderConstantVectorF(const int& reg, float* val, const int& vec4count) = 0;
+// 
+// 	virtual void SetVertexShaderConstantFloat(const int& reg, float* val) = 0;
+// 	virtual void SetPixelShaderConstantFloat(const int& reg, float* val) = 0;
+// 
+// 	virtual void SetVertexShaderConstantMatrixF(const int& reg, float* val, const int& matrixCount) = 0;
+// 	virtual void SetPixelShaderConstantMatrixF(const int& reg, float* val, const int& matrixCount) = 0;
+// 
+// 	virtual void ResetCommandList(const std::shared_ptr<Pso>& pso);
+// 	virtual void SetPsoRootSignature(const std::shared_ptr<Pso>& pso, const std::shared_ptr<RootSignature>& rs);
 			
-	/// begin complete frame
-	virtual bool BeginFrame();
-	/// end current frame
-	virtual void EndFrame();
-	bool IsBeginFrame() const;
+// 	/// begin complete frame
+// 	virtual bool BeginFrame();
+// 	/// end current frame
+// 	virtual void EndFrame();
+// 	bool IsBeginFrame() const;
 
 	virtual void ExecuteCmmdList();
 	virtual void FlushCmmdList();
 
-	/// set the current vertex stream source
-	virtual void SetStreamSource(IndexT streamIndex, const VertexBuffer* vb, IndexT offsetVertexIndex);
-	/// set the current vertex stream source Frequency 
-	//virtual void SetStreamSourceFreq(IndexT streamIndex, IndexT setting);
-	/// set current vertex layout
-	virtual void SetVertexLayout(const std::shared_ptr<VertexLayout>& vl) = 0;
-	/// set current index buffer
-	virtual void SetIndexBuffer(const std::shared_ptr<IndexBuffer>& ib) = 0;
-	/// set current primitive group
-	virtual void SetPrimitiveGroup(const std::shared_ptr<PrimitiveGroup>& pg) = 0;
-	/// set current GPU program
-	virtual void SetGPUProgram(const std::shared_ptr<GPUProgram>& program) = 0;
-	/// draw current primitives
-	virtual void Draw(SizeT startVertice,SizeT endVertice,SizeT startIndice,SizeT endIndice) = 0;
-	/// draw indexed, instanced primitives
-	virtual void DrawIndexedInstanced(SizeT numInstances);
-
-	/// present the rendered scene
-	virtual void Present(WindHandle hwnd ) = 0;
-	/// set viewport
-	virtual void SetViewPort(const int& x,const int& y,const int& width,const int& height,const float& minZ,const float& maxZ) = 0;
-	
-	//////////////////////////////////////////////////////////////////////////
-	//Fixed Pipeline Functions
-	virtual void FXSetClipPlane(const int& index,const Math::float4& plane) = 0;
+// 	/// set the current vertex stream source
+// 	virtual void SetStreamSource(IndexT streamIndex, const VertexBuffer* vb, IndexT offsetVertexIndex);
+// 	/// set the current vertex stream source Frequency 
+// 	//virtual void SetStreamSourceFreq(IndexT streamIndex, IndexT setting);
+// 	/// set current vertex layout
+// 	virtual void SetVertexLayout(const std::shared_ptr<VertexLayout>& vl) = 0;
+// 	/// set current index buffer
+// 	virtual void SetIndexBuffer(const std::shared_ptr<IndexBuffer>& ib) = 0;
+// 	/// set current primitive group
+// 	virtual void SetPrimitiveGroup(const std::shared_ptr<PrimitiveGroup>& pg) = 0;
+// 	/// set current GPU program
+// 	virtual void SetGPUProgram(const std::shared_ptr<GPUProgram>& program) = 0;
+// 	/// draw current primitives
+// 	virtual void Draw(SizeT startVertice,SizeT endVertice,SizeT startIndice,SizeT endIndice) = 0;
+// 	/// draw indexed, instanced primitives
+// 	virtual void DrawIndexedInstanced(SizeT numInstances);
+// 
+// 	/// present the rendered scene
+// 	virtual void Present(WindHandle hwnd ) = 0;
+// 	/// set viewport
+// 	virtual void SetViewPort(const int& x,const int& y,const int& width,const int& height,const float& minZ,const float& maxZ) = 0;
+// 	
+// 	//////////////////////////////////////////////////////////////////////////
+// 	//Fixed Pipeline Functions
+// 	virtual void FXSetClipPlane(const int& index,const Math::float4& plane) = 0;
 
 	virtual bool OnDeviceLost() = 0;
 
@@ -183,13 +183,13 @@ public:
 
 	virtual bool OnDeviceReset() = 0;
 
-	virtual bool LockTexture(const std::shared_ptr<Texture>& tex, ubyte* pData, IndexT mipLevel = 0);
-	virtual bool LockAllTexture(const std::shared_ptr<Texture>& tex, ubyte* pData);
-
-	virtual std::shared_ptr<ConstantBuffer> CreateConstantBuffer(SizeT nSize, const RenderBase::BufferData& desc);
-	virtual void UpdateConstantBuffer(const std::shared_ptr<ConstantBuffer>& pBuffer, const DataStream& data);
-	virtual void SetVSConstantBuffer(std::weak_ptr<ConstantBuffer> pBuffer, IndexT bindPoint);
-	virtual void SetPSConstantBuffer(std::weak_ptr<ConstantBuffer> pBuffer, IndexT bindPoint);
+// 	virtual bool LockTexture(const std::shared_ptr<Texture>& tex, ubyte* pData, IndexT mipLevel = 0);
+// 	virtual bool LockAllTexture(const std::shared_ptr<Texture>& tex, ubyte* pData);
+// 
+// 	virtual std::shared_ptr<ConstantBuffer> CreateConstantBuffer(SizeT nSize, const RenderBase::BufferData& desc);
+// 	virtual void UpdateConstantBuffer(const std::shared_ptr<ConstantBuffer>& pBuffer, const DataStream& data);
+// 	virtual void SetVSConstantBuffer(std::weak_ptr<ConstantBuffer> pBuffer, IndexT bindPoint);
+// 	virtual void SetPSConstantBuffer(std::weak_ptr<ConstantBuffer> pBuffer, IndexT bindPoint);
 
 	//////////////////////////////////////////////////////////////////////////
 	//Set DrawWireFrame

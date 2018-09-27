@@ -121,8 +121,6 @@ void RenderTargetD3D12::LoadBuffers(SizeT _width, SizeT _height)
 		_CreateRT(m_pD3d12ResovleRt);
 	}
 
-	RenderDeviceD3D12::Instance()->GetGraphicQueue()->IncCmmdNum();
-
 	RenderTarget::setup();
 }
 
@@ -226,33 +224,34 @@ void RenderTargetD3D12::_CreateBackbuffer()
 	sd.SampleDesc.Quality = 0;
 	sd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 	sd.BufferCount = RenderDeviceD3D12::s_MaxSwapChainBufferCount;
-	sd.OutputWindow = (HWND)RenderDeviceD3D12::Instance()->GetWindowHandle();;
+//	sd.OutputWindow = (HWND)RenderDeviceD3D12::Instance()->GetWindowHandle();;
 	sd.Windowed = true;
 	sd.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
 	sd.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
 
-	GraphicCommandList* pQueue = RenderDeviceD3D12::Instance()->GetGraphicQueue();
-
-	HRESULT hr = pFactory->CreateSwapChain(RenderDeviceD3D12::Instance()->GetCmdQueue(), &sd, &m_pSwapChain);
-	if (FAILED(hr))
-	{
-		assert(false);
-	}
-
-	for (IndexT i = 0; i < RenderDeviceD3D12::s_MaxSwapChainBufferCount; ++i)
-	{
-		D3D12RtInfo& info = m_SwapChainRTList[i];
-		info.cpuRtv = pHeap->GetCPUHandle();
-		hr = m_pSwapChain->GetBuffer(i, IID_PPV_ARGS(&info.pResource));
-		if (FAILED(hr))
-		{
-			assert(false);
-		}
-
-		pDevice->CreateRenderTargetView(info.pResource, NULL, info.cpuRtv.handle);
-
-		_CreateDepthStencilView(info);
-	}
+	assert(0);//foo not totally implemented;
+// 	GraphicCommandList* pQueue = RenderDeviceD3D12::Instance()->GetGraphicQueue();
+// 
+// 	HRESULT hr = pFactory->CreateSwapChain(RenderDeviceD3D12::Instance()->GetCmdQueue(), &sd, &m_pSwapChain);
+// 	if (FAILED(hr))
+// 	{
+// 		assert(false);
+// 	}
+// 
+// 	for (IndexT i = 0; i < RenderDeviceD3D12::s_MaxSwapChainBufferCount; ++i)
+// 	{
+// 		D3D12RtInfo& info = m_SwapChainRTList[i];
+// 		info.cpuRtv = pHeap->GetCPUHandle();
+// 		hr = m_pSwapChain->GetBuffer(i, IID_PPV_ARGS(&info.pResource));
+// 		if (FAILED(hr))
+// 		{
+// 			assert(false);
+// 		}
+// 
+// 		pDevice->CreateRenderTargetView(info.pResource, NULL, info.cpuRtv.handle);
+// 
+// 		_CreateDepthStencilView(info);
+// 	}
 
 }
 
@@ -301,11 +300,11 @@ void RenderTargetD3D12::_CreateDepthStencilView(D3D12RtInfo& info, uint multiSam
 
 
 	pDevice->CreateDepthStencilView(info.pDepthResource, &ds, info.cpuDsv.handle);
-
-	GraphicCommandList* pQueue = RenderDeviceD3D12::Instance()->GetGraphicQueue();
-	ID3D12GraphicsCommandList* pCommandList = pQueue->GetCommandList();
-	pCommandList->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(info.pDepthResource, 
-								  D3D12_RESOURCE_STATE_COMMON, D3D12_RESOURCE_STATE_DEPTH_WRITE) );
+	assert(0);//foo not totally implemented;
+// 	GraphicCommandList* pQueue = RenderDeviceD3D12::Instance()->GetGraphicQueue();
+// 	ID3D12GraphicsCommandList* pCommandList = pQueue->GetCommandList();
+// 	pCommandList->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(info.pDepthResource, 
+// 								  D3D12_RESOURCE_STATE_COMMON, D3D12_RESOURCE_STATE_DEPTH_WRITE) );
 }
 
 void RenderTargetD3D12::setupMultiSampleType()

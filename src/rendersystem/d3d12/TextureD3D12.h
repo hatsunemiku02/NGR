@@ -3,6 +3,7 @@
 #include "rendersystem/base/Texture.h"
 #include "D3D12Heads.h"
 #include "DescriptorHeap.h"
+#include "CommandQueue.h"
 
 #if RENDERDEVICE_D3D12
 
@@ -50,9 +51,9 @@ public:
 	/// load Buffers;
 	bool LoadBuffers();
 	bool LoadFileFromBuffers();
-	bool _LoadNormBuffer(ubyte* srcData, SizeT size );
+	bool _LoadNormBuffer(const std::shared_ptr<GraphicCommandList>& pCmdList, ubyte* srcData, SizeT size );
 	void _LoadNormErrorBuffer();
-	bool _LoadCubeBuffer(ubyte* srcData, SizeT size);
+	bool _LoadCubeBuffer(const std::shared_ptr<GraphicCommandList>& pCmdList, ubyte* srcData, SizeT size);
 	void _LoadCubeErrorBuffer();
 
 	void UpdateTexture(UpdateFunction texUpdateFunc, void* tag);

@@ -27,8 +27,8 @@ namespace D3D12
 	{
 		if (m_BeginRender)
 		{
-			RenderDeviceD3D12::Instance()->SetSwapChain(m_TargetHandle);
-			RenderDeviceD3D12::Instance()->Present(m_WinHandle);
+			//RenderDeviceD3D12::Instance()->SetSwapChain(m_TargetHandle);
+			//RenderDeviceD3D12::Instance()->Present(m_WinHandle);
 			m_BeginRender = false;
 		}
 	}

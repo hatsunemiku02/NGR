@@ -2,6 +2,7 @@
 
 #include "D3D12Heads.h"
 #include "base/IndexBuffer.h"
+#include "CommandQueue.h"
 
 #if RENDERDEVICE_D3D12
 
@@ -22,7 +23,7 @@ public:
 
 	void UpdateData(const RenderBase::DataStream& stream);
 
-	static void CreateIndexBuffer(const std::shared_ptr<RenderBase::IndexBufferData>& ibd, std::shared_ptr<IndexBufferD3D12>& out);
+	static void CreateIndexBuffer(const std::shared_ptr<GraphicCommandList>& pCmdList, const std::shared_ptr<RenderBase::IndexBufferData>& ibd, std::shared_ptr<IndexBufferD3D12>& out);
 
 	void SetD3D12IndexBuffer(ID3D12Resource* ptr);
 	void SetUploadBuffer(ID3D12Resource* ptr);

@@ -35,11 +35,8 @@ public:
     virtual ~RenderTarget();
   	/// discard the render target object
 	virtual void Discard();
-
     /// return true if valid (has been setup)
     bool IsValid() const;
-
-
 
     /// set to true if default render target (only called by RenderDevice)
     void SetDefaultRenderTarget(bool b);

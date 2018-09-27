@@ -15,9 +15,6 @@
     <ClInclude Include="..\..\src\player\RenderObj.h">
       <Filter>Graphic</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\player\RenderTarget.h">
-      <Filter>Graphic</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\player\Test_Vert.h">
       <Filter>Graphic</Filter>
     </ClInclude>
@@ -39,6 +36,9 @@
     <ClInclude Include="..\..\src\player\ShaderDesc.h">
       <Filter>Graphic\todo</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\player\RenderTarget.h">
+      <Filter>Graphic\todo</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\player\main.cpp">
@@ -48,9 +48,6 @@
       <Filter>Graphic</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\player\RenderObj.cpp">
-      <Filter>Graphic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\player\RenderTarget.cpp">
       <Filter>Graphic</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\player\Viewport.cpp">
@@ -63,6 +60,9 @@
       <Filter>Graphic\todo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\player\ShaderDesc.cpp">
+      <Filter>Graphic\todo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\player\RenderTarget.cpp">
       <Filter>Graphic\todo</Filter>
     </ClCompile>
   </ItemGroup>

@@ -20,9 +20,12 @@ public:
 	void ResetRenderList();
 
 	void Reset();
-	void RenderOneItem(const std::shared_ptr<RenderObj>& obj);
+	
 	void Render();
 protected:
+	void SetMaterial(const std::shared_ptr<RenderObj>& obj);
+	void SetVertexBuffer(const std::shared_ptr<RenderObj>& obj);
+	void RenderOneItem(const std::shared_ptr<RenderObj>& obj);
 	std::unique_ptr<D3D12::GraphicCommandList> m_CommandList;
 
 	std::vector<std::shared_ptr<RenderObj>> m_RenderList;

@@ -157,7 +157,6 @@
     <ClCompile Include="..\..\src\rendersystem\d3d12\TextureD3D12.cc" />
     <ClCompile Include="..\..\src\rendersystem\d3d12\VertexBufferD3D12.cc" />
     <ClCompile Include="..\..\src\rendersystem\d3d12\VertexLayoutD3D12.cc" />
-    <ClCompile Include="..\..\src\rendersystem\RenderSystem.cc" />
     <ClCompile Include="..\..\src\rendersystem\stdneb.cc" />
     <ClCompile Include="compiletest.cpp" />
   </ItemGroup>
@@ -206,7 +205,6 @@
     <ClInclude Include="..\..\src\rendersystem\d3d12\TextureD3D12.h" />
     <ClInclude Include="..\..\src\rendersystem\d3d12\VertexBufferD3D12.h" />
     <ClInclude Include="..\..\src\rendersystem\d3d12\VertexLayoutD3D12.h" />
-    <ClInclude Include="..\..\src\rendersystem\RenderSystem.h" />
     <ClInclude Include="..\..\src\rendersystem\stdneb.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -2,7 +2,6 @@
 #include "TextureD3D12.h"
 #include "D3D12Types.h"
 #include "RenderDeviceD3D12.h"
-#include "CommandQueue.h"
 #include <vector>
 #include <algorithm>
 
@@ -155,7 +154,7 @@ void BlitCopyImage( ubyte* dest, SizeT destRowPitch, SizeT destHeight,
 	}
 }
 
-bool TextureD3D12::_LoadNormBuffer(ubyte* srcData, SizeT size )
+bool TextureD3D12::_LoadNormBuffer(const std::shared_ptr<GraphicCommandList>& pCmdList, ubyte* srcData, SizeT size )
 {
 	if( GetDepth() != 1 || GetWidth() <= 0 || GetHeight() <= 0 )
 	{
@@ -223,7 +222,7 @@ bool TextureD3D12::_LoadNormBuffer(ubyte* srcData, SizeT size )
 	std::vector<D3D12_SUBRESOURCE_DATA> initData;
 	InitSubResource(initData, texMipMap, texWidth, texHeight, srcData, format);
 
-	ID3D12GraphicsCommandList* pCommandList = RenderDeviceD3D12::Instance()->GetGraphicQueue()->GetCommandList();
+	ID3D12GraphicsCommandList* pCommandList = pCmdList->GetCommandList();
 	pCommandList->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(m_pD3d12Texture.pResource,
 		D3D12_RESOURCE_STATE_COMMON, D3D12_RESOURCE_STATE_COPY_DEST));
 

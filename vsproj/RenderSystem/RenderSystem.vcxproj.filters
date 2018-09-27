@@ -19,9 +19,6 @@
     <ClCompile Include="compiletest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\rendersystem\RenderSystem.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\rendersystem\stdneb.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -144,9 +141,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\rendersystem\RenderSystem.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\rendersystem\stdneb.h">
       <Filter>Source Files</Filter>
     </ClInclude>
