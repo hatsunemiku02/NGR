@@ -4,6 +4,10 @@ cbuffer objConstantBuffer : register(b0)\
 {\
 	float4 offset;\
 };\
+cbuffer matConstantBuffer : register(b1)\
+{\
+	float4 color;\
+};\
 struct PSInput\
 {\
 	float4 position : SV_POSITION;\
@@ -20,7 +24,7 @@ PSInput VSMain(float4 position : POSITION)\
 \
 float4 PSMain(PSInput input) : SV_TARGET\
 {\
-	return float4(1,1,1,1);\
+	return color;\
 }\
 ";
 #include "d3d12/RenderDeviceD3D12.h"

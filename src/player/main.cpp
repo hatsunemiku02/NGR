@@ -82,7 +82,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
  	std::shared_ptr<Material> mat = std::make_shared<Material>();
  	mat->SetShaderCode(const_cast<void*>(vs.pShaderBytecode), vs.BytecodeLength, const_cast<void*>(ps.pShaderBytecode), ps.BytecodeLength);
-
+	
+	Math::float4 color = Math::float4(1, 0, 1, 0);
+	RenderBase::DataStream color_datastream;
+	color_datastream.data = &color;
+	color_datastream.sizeInByte = sizeof(color);
+	mat->SetConstantBuffers({ (uint)color_datastream.sizeInByte });
+	mat->UpdateConstantBuffer(0, color_datastream);
 
 	g_pResourceCmdList->ExecuteCommandList();
 	g_pResourceCmdList->WaitForExecution();
@@ -96,7 +102,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	pObj->Init(pPG12);
 	pObj->m_pMaterial = mat;
 
-	Math::float4 offset = Math::float4(1, 1, 1, 0);
+	Math::float4 offset = Math::float4(0.5, .5, .5, 0);
 	RenderBase::DataStream datastream;
 	datastream.data = &offset;
 	datastream.sizeInByte = sizeof(offset);

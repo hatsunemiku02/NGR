@@ -4,6 +4,9 @@
     <Filter Include="Graphic">
       <UniqueIdentifier>{c71c2de4-63ec-45b5-8054-31be9d49930e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphic\todo">
+      <UniqueIdentifier>{15171bdc-80fe-4f13-b1b9-fc104b5299e6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\player\pipeline.h">
@@ -30,11 +33,11 @@
     <ClInclude Include="..\..\src\player\RenderStateData.h">
       <Filter>Graphic</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\player\ShaderDesc.h">
-      <Filter>Graphic</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\player\RootSigCreator.h">
-      <Filter>Graphic</Filter>
+      <Filter>Graphic\todo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\player\ShaderDesc.h">
+      <Filter>Graphic\todo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -56,11 +59,11 @@
     <ClCompile Include="..\..\src\player\Material.cpp">
       <Filter>Graphic</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\player\ShaderDesc.cpp">
-      <Filter>Graphic</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\player\RootSigCreator.cpp">
-      <Filter>Graphic</Filter>
+      <Filter>Graphic\todo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\player\ShaderDesc.cpp">
+      <Filter>Graphic\todo</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

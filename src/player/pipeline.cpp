@@ -47,17 +47,16 @@ void Pipeline::RenderOneItem(const std::shared_ptr<RenderObj>& obj)
 {
 	m_CommandList->GetCommandList()->SetGraphicsRootSignature(obj->m_pRootSig->GetRootSignature());
 	m_CommandList->GetCommandList()->SetPipelineState(obj->m_pPipeStateObj->GetPso());
-	m_CommandList->GetCommandList()->SetGraphicsRootConstantBufferView(0, obj->GetConstantBuffers()[0].GetBuffer()->GetGPUVirtualAddress());
 
-// 	for (int i = 0; i < obj->GetConstantBuffers().size(); i++)
-// 	{
-// 		m_CommandList->GetCommandList()->SetGraphicsRootConstantBufferView(i, obj->GetConstantBuffers()[i].GetBuffer()->GetGPUVirtualAddress());
-// 	}
-// 
-// 	for (int n = 0; n < obj->m_pMaterial->GetConstantBuffers().size(); n++)
-// 	{
-// 		m_CommandList->GetCommandList()->SetGraphicsRootConstantBufferView(n+ obj->GetConstantBuffers().size(), obj->m_pMaterial->GetConstantBuffers()[n].GetBuffer()->GetGPUVirtualAddress());
-// 	}
+	for (int i = 0; i < obj->GetConstantBuffers().size(); i++)
+	{
+		m_CommandList->GetCommandList()->SetGraphicsRootConstantBufferView(i, obj->GetConstantBuffers()[i].GetBuffer()->GetGPUVirtualAddress());
+	}
+
+	for (int n = 0; n < obj->m_pMaterial->GetConstantBuffers().size(); n++)
+	{
+		m_CommandList->GetCommandList()->SetGraphicsRootConstantBufferView(n+ obj->GetConstantBuffers().size(), obj->m_pMaterial->GetConstantBuffers()[n].GetBuffer()->GetGPUVirtualAddress());
+	}
 
 
 	m_CommandList->GetCommandList()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);

@@ -1,5 +1,7 @@
 #include "Material.h"
 
+const int MAT_RIG_START_IDX = 1;
+
 Material::Material()
 {
 	// init default blend state
@@ -35,7 +37,7 @@ void Material::SetConstantBuffers(const std::vector<uint>& sizeList)
 	m_SigInfo.cbvInfo.resize(sizeList.size());
 	for (int i = 0; i < sizeList.size(); i++)
 	{
-		m_SigInfo.cbvInfo[i] = i;
+		m_SigInfo.cbvInfo[i] = i+ MAT_RIG_START_IDX;
 	}
 	
 }

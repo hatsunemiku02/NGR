@@ -1,7 +1,7 @@
 #include "RenderObj.h"
 
 const uint POSTION_BUFFER_IDX = 0;
-const uint POSTION_BUFFER_SIZE = 64;
+const uint POSTION_BUFFER_SIZE = 16;
 
 RenderObj::RenderObj()
 {
