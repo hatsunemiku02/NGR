@@ -26,13 +26,13 @@ void RenderObj::UpdatePosBuffer(const RenderBase::DataStream& posBuffer)
 	m_ConstantBuffers[POSTION_BUFFER_IDX].UpdateBuffer(posBuffer);
 }
 
-void RenderObj::GenerateInternal(const std::shared_ptr<ViewPortD3D12>& pViewPort)
+void RenderObj::GenerateInternal(const Pipeline2MatInfo& extrenalInfo)
 {
 	RenderBase::PsoData psoData = m_pMaterial->GetPsoData();
 
 	psoData.pVertexLayout =	m_pPrimitiveGroup->GetVertexBuffer()->GetVertexLayout();
 
-	psoData.rtvFormat = pViewPort->GetPixelFormat();
+	psoData.rtvFormat = extrenalInfo.m_RTPixelFormat;
 
 	RenderBase::SignatureInfo sigInfo = m_pMaterial->GetRootSigInfo();
 	//insert position

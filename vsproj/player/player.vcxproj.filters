@@ -37,7 +37,10 @@
       <Filter>Graphic\todo</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\player\RenderTarget.h">
-      <Filter>Graphic\todo</Filter>
+      <Filter>Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\player\PipeLine2MatInfo.h">
+      <Filter>Graphic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -63,7 +66,10 @@
       <Filter>Graphic\todo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\player\RenderTarget.cpp">
-      <Filter>Graphic\todo</Filter>
+      <Filter>Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\player\PipeLine2MatInfo.cpp">
+      <Filter>Graphic</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

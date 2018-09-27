@@ -71,7 +71,7 @@ void DX12Pso::Init(const RenderBase::PsoData& info, const std::shared_ptr<Render
 	psoDesc.SampleMask = UINT_MAX;
 	psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
 	psoDesc.NumRenderTargets = 1;
-	psoDesc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;// D3D12Types::AsD3D12PixelFormat(info.rtvFormat);
+	psoDesc.RTVFormats[0] =  D3D12Types::AsD3D12PixelFormat(info.rtvFormat);
 	psoDesc.SampleDesc.Count = 1;// RenderDeviceD3D12::Instance()->GetAAType();
 	psoDesc.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ALL;
 	//psoDesc.SampleDesc.Quality = RenderDeviceD3D12::Instance()->GetAAQuality();

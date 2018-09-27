@@ -96,7 +96,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	Pipeline* renderPipeline = new Pipeline();
 
 	std::shared_ptr<ViewPortD3D12> pViewPort = std::make_shared<ViewPortD3D12>();
-	pViewPort->Init(RenderBase::PixelFormat::A4R4G4B4, 800, 600, hwnd);
+	pViewPort->Init( 800, 600);
 
 	std::shared_ptr<RenderObj> pObj = std::make_shared<RenderObj>();
 	pObj->Init(pPG12);
@@ -107,11 +107,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	datastream.data = &offset;
 	datastream.sizeInByte = sizeof(offset);
 	pObj->UpdatePosBuffer(datastream);
-	pObj->GenerateInternal(pViewPort);
+	
 
 	renderPipeline->SetViewPort(pViewPort);
+	renderPipeline->SetRenderToScreen(RenderBase::PixelFormat::A4R4G4B4, hwnd);
 	renderPipeline->AddRenderObj(pObj);
-	
+	pObj->GenerateInternal(renderPipeline->GenerateMatExternalInfo());
 	// 主消息循环: 
 	while (GetMessage(&msg, nullptr, 0, 0))
 	{

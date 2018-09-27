@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\player\Material.h" />
     <ClInclude Include="..\..\src\player\pipeline.h" />
+    <ClInclude Include="..\..\src\player\PipeLine2MatInfo.h" />
     <ClInclude Include="..\..\src\player\RenderObj.h" />
     <ClInclude Include="..\..\src\player\RenderStateData.h" />
     <ClInclude Include="..\..\src\player\RenderTarget.h" />
@@ -164,6 +165,7 @@
     <ClCompile Include="..\..\src\player\main.cpp" />
     <ClCompile Include="..\..\src\player\Material.cpp" />
     <ClCompile Include="..\..\src\player\pipeline.cpp" />
+    <ClCompile Include="..\..\src\player\PipeLine2MatInfo.cpp" />
     <ClCompile Include="..\..\src\player\RenderObj.cpp" />
     <ClCompile Include="..\..\src\player\RenderTarget.cpp" />
     <ClCompile Include="..\..\src\player\RootSigCreator.cpp" />
