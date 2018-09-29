@@ -86,58 +86,75 @@ bool TextureD3D12::LoadFileFromBuffers()
 	return true;
 }
 
-bool TextureD3D12::LoadBuffers()
+void TextureD3D12::Init(SizeT width, SizeT height,RenderBase::PixelFormat::Code colorFormat)
 {
-// 	DXGI_FORMAT format = D3D12Types::AsD3D12PixelFormat( GetPixelFormat() );
-// 
-// 	if (format == DXGI_FORMAT_UNKNOWN || GetType() == InvalidType)
-// 	{
-// 		_LoadNormErrorBuffer();
-// 		return false;
-// 	}
-// 
-// 	if (!m_stream.isvalid())
-// 	{
-// 		_LoadNormErrorBuffer();
-// 		return false;
-// 	}
-// 
-// 	std::shared_ptr<IO::Stream> stream = m_stream;
-// 	stream->SetAccessMode(IO::Stream::ReadAccess);
-// 	memorySize = 0;
-// 	bool bCreateOK = false;
-// 	if (stream->Open())
-// 	{
-// 
-// 		if (GetType() == Texture2D)
-// 		{
-// 			ubyte* srcData = (ubyte*)stream->Map();
-// 			UINT srcDataSize = stream->GetSize();
-// 
-// 			bCreateOK = _LoadNormBuffer(srcData, srcDataSize);
-// 
-// 		}
-// 		else if (GetType() == TextureCube)
-// 		{
-// 
-// 		}
-// 		else
-// 		{
-// 			n_error("TextureD3D12::LoadBuffers: Invalid tex type");
-// 
-// 			bCreateOK = false;
-// 		}
-// 
-// 		stream->Close();
-// 
-// 	}
-// 
-// 	if (!bCreateOK)
-// 	{
-// 		_LoadNormErrorBuffer();
-// 	}
+	D3D12_RESOURCE_DESC texDesc;
+	ZeroMemory(&texDesc, sizeof(D3D12_RESOURCE_DESC));
+	texDesc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;
+	texDesc.Alignment = 0;
+	texDesc.Width = this->width;
+	texDesc.Height = this->height;
+	texDesc.DepthOrArraySize = 1;
+	texDesc.MipLevels = 1;
+	texDesc.Format = D3D12Types::AsD3D12PixelFormat(colorFormat);
+	texDesc.SampleDesc.Count = 1;
+	texDesc.SampleDesc.Quality = 0;
+	texDesc.Layout = D3D12_TEXTURE_LAYOUT_UNKNOWN;
+	//texDesc.Flags = D3D12_RESOURCE_FLAG_ALLOW_RENDER_TARGET;
 
-//	return bCreateOK;
+	ID3D12Device* pDevice = RenderDeviceD3D12::Instance()->GetDevice();
+	//ID3D12GraphicsCommandList* pCommandList = pCmdList->GetCommandList();
+
+// 	HRESULT hr = pDevice->CreateCommittedResource(
+// 		&CD3DX12_HEAP_PROPERTIES(D3D12_HEAP_TYPE_DEFAULT),
+// 		D3D12_HEAP_FLAG_NONE,
+// 		&texDesc,
+// 		D3D12_RESOURCE_STATE_RENDER_TARGET,
+// 		NULL,
+// 		IID_PPV_ARGS(&pInfo->pResource));
+}
+
+
+
+bool TextureD3D12::LoadBuffers(const std::shared_ptr<GraphicCommandList>& pCmdList,ubyte* srcData,uint srcDataSize)
+{
+	DXGI_FORMAT format = D3D12Types::AsD3D12PixelFormat( GetPixelFormat() );
+
+	if (format == DXGI_FORMAT_UNKNOWN || GetType() == InvalidType)
+	{
+		_LoadNormErrorBuffer();
+		return false;
+	}
+	bool bCreateOK = false;
+	if (srcData!=nullptr)
+	{
+
+		if (GetType() == Texture2D)
+		{
+		
+
+		//CreateOK = _LoadNormBuffer(srcData, srcDataSize);
+
+		}
+		else if (GetType() == TextureCube)
+		{
+
+		}
+		else
+		{
+			//error("TextureD3D12::LoadBuffers: Invalid tex type");
+
+			bCreateOK = false;
+		}
+
+	}
+
+	if (!bCreateOK)
+	{
+		_LoadNormErrorBuffer();
+	}
+
+	return bCreateOK;
 	return false;
 }
 

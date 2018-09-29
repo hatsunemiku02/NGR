@@ -47,9 +47,9 @@ public:
 	/// unmap cube map face after CPU access
 	void UnmapCubeFace(CubeFace face, IndexT mipLevel);
 
-	
+	void Init(SizeT width, SizeT height, RenderBase::PixelFormat::Code colorFormat);
 	/// load Buffers;
-	bool LoadBuffers();
+	bool LoadBuffers(const std::shared_ptr<GraphicCommandList>& pCmdList,ubyte* srcData, uint srcDataSize);
 	bool LoadFileFromBuffers();
 	bool _LoadNormBuffer(const std::shared_ptr<GraphicCommandList>& pCmdList, ubyte* srcData, SizeT size );
 	void _LoadNormErrorBuffer();

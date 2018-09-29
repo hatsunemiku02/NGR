@@ -95,7 +95,7 @@ void Pipeline::Reset()
 	D3D12::CPUHandle* cpuhandle = currentRT->GetRenderTargetHandke();
 	m_CommandList->GetCommandList()->OMSetRenderTargets(1, &cpuhandle->handle, FALSE, nullptr);
 
-	const float clearColor[] = { 0.0f, 0.2f, 0.4f, 1.0f };
+	const float clearColor[] = { 0.5f, 0.5f, 0.5f, 1.0f };
 	m_CommandList->GetCommandList()->ClearRenderTargetView(cpuhandle->handle, clearColor, 0, nullptr);
 
 }
@@ -114,6 +114,13 @@ void Pipeline::SetMaterial(const std::shared_ptr<RenderObj>& obj)
 	{
 		m_CommandList->GetCommandList()->SetGraphicsRootConstantBufferView(n + obj->GetConstantBuffers().size(), obj->m_pMaterial->GetConstantBuffers()[n].GetBuffer()->GetGPUVirtualAddress());
 	}
+
+	D3D12::DescriptorHeap* pSrvHeap = D3D12::RenderDeviceD3D12::Instance()->GetCsuHeap();
+	for (int i = 0; i < obj->m_pMaterial->GetTextures().size(); i++)
+	{
+		m_CommandList->GetCommandList()->SetGraphicsRootDescriptorTable(i, pSrvHeap->GetGpuHandleFromCpu(*obj->m_pMaterial->GetTextures()[i]->GetCpuHandle()));
+	}
+
 }
 
 void Pipeline::SetVertexBuffer(const std::shared_ptr<RenderObj>& obj)

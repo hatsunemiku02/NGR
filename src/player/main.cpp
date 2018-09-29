@@ -7,6 +7,7 @@
 #include "Test_Vert.h"
 #include "RenderObj.h"
 #include "ViewPort.h"
+#include "Texture.h"
 #define WIN32_LEAN_AND_MEAN             // 从 Windows 头中排除极少使用的资料
 // Windows 头文件: 
 #include <windows.h>
@@ -87,13 +88,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	RenderBase::DataStream color_datastream;
 	color_datastream.data = &color;
 	color_datastream.sizeInByte = sizeof(color);
-	mat->SetConstantBuffers({ (uint)color_datastream.sizeInByte });
+	mat->InitMat({ (uint)color_datastream.sizeInByte },0);
 	mat->UpdateConstantBuffer(0, color_datastream);
 
 	g_pResourceCmdList->ExecuteCommandList();
 	g_pResourceCmdList->WaitForExecution();
 
-	Pipeline* renderPipeline = new Pipeline();
+	
 
 	std::shared_ptr<ViewPortD3D12> pViewPort = std::make_shared<ViewPortD3D12>();
 	pViewPort->Init( 800, 600);
@@ -109,13 +110,37 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	pObj->UpdatePosBuffer(datastream);
 	
 
+
+	//main pipeline
+	Pipeline* renderPipeline = new Pipeline();
 	renderPipeline->SetViewPort(pViewPort);
 	renderPipeline->SetRenderToScreen(RenderBase::PixelFormat::A4R4G4B4, hwnd);
 	renderPipeline->AddRenderObj(pObj);
 	pObj->GenerateInternal(renderPipeline->GenerateMatExternalInfo());
+
+
+	//prepipeline
+	std::shared_ptr<Texture> m_pP1RTTex = std::make_shared<Texture>();
+	m_pP1RTTex->Init(true, 800, 600, RenderBase::PixelFormat::A4R4G4B4);
+	std::shared_ptr<RenderTarget> m_P1RTTar = std::make_shared<RenderTarget>();
+	m_P1RTTar->Init(m_pP1RTTex);
+
+	Pipeline* rptt1 = new Pipeline();
+	rptt1->SetViewPort(pViewPort);
+	rptt1->SetRenderTarget(m_P1RTTar);
+	rptt1->AddRenderObj(pObj);
+	pObj->GenerateInternal(rptt1->GenerateMatExternalInfo());
+
+
+
+
 	// 主消息循环: 
 	while (GetMessage(&msg, nullptr, 0, 0))
 	{
+
+		rptt1->Reset();
+		rptt1->Render();
+
 		renderPipeline->Reset();
 		renderPipeline->Render();
 
