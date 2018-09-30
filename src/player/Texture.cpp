@@ -13,11 +13,11 @@ Texture::~Texture()
 
 void Texture::Init(bool allowRT,uint width, uint height, RenderBase::PixelFormat::Code colorFormat)
 {
-	m_TextureFormat = colorFormat;
-
+	m_textureFormat = colorFormat;
+	m_textureState = ResState::ShaderRes;
 	D3D12_RESOURCE_DESC textureDesc = {};
 	textureDesc.MipLevels = 1;
-	textureDesc.Format = D3D12::D3D12Types::AsD3D12PixelFormat(m_TextureFormat); 
+	textureDesc.Format = D3D12::D3D12Types::AsD3D12PixelFormat(m_textureFormat); 
 	textureDesc.Width = width;
 	textureDesc.Height = height;
 	textureDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
@@ -31,6 +31,7 @@ void Texture::Init(bool allowRT,uint width, uint height, RenderBase::PixelFormat
 	D3D12_RESOURCE_STATES resrouceState = D3D12_RESOURCE_STATE_COPY_DEST;
 	if(allowRT)
 	{
+		m_textureState = ResState::ShaderRes;
 		resrouceState = D3D12_RESOURCE_STATE_PRESENT;
 		textureDesc.Flags = D3D12_RESOURCE_FLAG_ALLOW_RENDER_TARGET;
 
@@ -54,7 +55,7 @@ void Texture::Init(bool allowRT,uint width, uint height, RenderBase::PixelFormat
 
 	D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc;
 	srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
-	srvDesc.Format = D3D12::D3D12Types::AsD3D12PixelFormat(m_TextureFormat);
+	srvDesc.Format = D3D12::D3D12Types::AsD3D12PixelFormat(m_textureFormat);
 	srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
 	srvDesc.Texture2D.MostDetailedMip = 0;
 	srvDesc.Texture2D.MipLevels = 1;

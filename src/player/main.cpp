@@ -76,13 +76,20 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	TestShader testShader;
 	testShader.Init();
-
 	CD3DX12_SHADER_BYTECODE vs = CD3DX12_SHADER_BYTECODE(testShader.mVertexShader);
 	CD3DX12_SHADER_BYTECODE ps = CD3DX12_SHADER_BYTECODE(testShader.mPixelShader);
 
+	TestShader texTestShader;
+	texTestShader.Init();
+	CD3DX12_SHADER_BYTECODE vsTex = CD3DX12_SHADER_BYTECODE(texTestShader.mtexVertexShader);
+	CD3DX12_SHADER_BYTECODE psTex = CD3DX12_SHADER_BYTECODE(texTestShader.mtexPixelShader);
 
  	std::shared_ptr<Material> mat = std::make_shared<Material>();
  	mat->SetShaderCode(const_cast<void*>(vs.pShaderBytecode), vs.BytecodeLength, const_cast<void*>(ps.pShaderBytecode), ps.BytecodeLength);
+
+	std::shared_ptr<Material> texmat = std::make_shared<Material>();
+	mat->SetShaderCode(const_cast<void*>(vsTex.pShaderBytecode), vsTex.BytecodeLength, const_cast<void*>(psTex.pShaderBytecode), psTex.BytecodeLength);
+
 	
 	Math::float4 color = Math::float4(1, 0, 1, 0);
 	RenderBase::DataStream color_datastream;
@@ -90,6 +97,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	color_datastream.sizeInByte = sizeof(color);
 	mat->InitMat({ (uint)color_datastream.sizeInByte },0);
 	mat->UpdateConstantBuffer(0, color_datastream);
+
+	texmat->InitMat({ (uint)color_datastream.sizeInByte }, 1);
+	texmat->UpdateConstantBuffer(0, color_datastream);
 
 	g_pResourceCmdList->ExecuteCommandList();
 	g_pResourceCmdList->WaitForExecution();
@@ -101,13 +111,23 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	std::shared_ptr<RenderObj> pObj = std::make_shared<RenderObj>();
 	pObj->Init(pPG12);
-	pObj->m_pMaterial = mat;
+	pObj->m_pMaterial = texmat;
+
+	std::shared_ptr<RenderObj> pObjPreChain = std::make_shared<RenderObj>();
+	pObjPreChain->Init(pPG12);
+	pObjPreChain->m_pMaterial = mat;
 
 	Math::float4 offset = Math::float4(0.5, .5, .5, 0);
 	RenderBase::DataStream datastream;
 	datastream.data = &offset;
 	datastream.sizeInByte = sizeof(offset);
 	pObj->UpdatePosBuffer(datastream);
+
+	Math::float4 offset2 = Math::float4(0.0, 0.0, 0.0, 0);
+	RenderBase::DataStream datastream2;
+	datastream2.data = &offset2;
+	datastream2.sizeInByte = sizeof(offset2);
+	pObjPreChain->UpdatePosBuffer(datastream2);
 	
 
 
@@ -119,7 +139,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	pObj->GenerateInternal(renderPipeline->GenerateMatExternalInfo());
 
 
-	//prepipeline
+	//pre pipeline
 	std::shared_ptr<Texture> m_pP1RTTex = std::make_shared<Texture>();
 	m_pP1RTTex->Init(true, 800, 600, RenderBase::PixelFormat::A4R4G4B4);
 	std::shared_ptr<RenderTarget> m_P1RTTar = std::make_shared<RenderTarget>();
@@ -128,8 +148,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	Pipeline* rptt1 = new Pipeline();
 	rptt1->SetViewPort(pViewPort);
 	rptt1->SetRenderTarget(m_P1RTTar);
-	rptt1->AddRenderObj(pObj);
-	pObj->GenerateInternal(rptt1->GenerateMatExternalInfo());
+	rptt1->AddRenderObj(pObjPreChain);
+	pObjPreChain->GenerateInternal(rptt1->GenerateMatExternalInfo());
 
 
 

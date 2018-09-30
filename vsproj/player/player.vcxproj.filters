@@ -45,6 +45,9 @@
     <ClInclude Include="..\..\src\player\Texture.h">
       <Filter>Graphic</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\player\ResState.h">
+      <Filter>Graphic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\player\main.cpp">

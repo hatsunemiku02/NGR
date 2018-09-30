@@ -17,7 +17,7 @@ public:
 	{
 		return m_pRenderTarget;
 	}
-	D3D12::CPUHandle* GetRenderTargetHandke()
+	D3D12::CPUHandle* GetRenderTargetHandle()
 	{
 		return m_pRenderTargetHandle;
 	}
@@ -25,9 +25,15 @@ public:
 	{
 		return m_RTFormat;
 	}
+	std::shared_ptr<Texture> GetBindColorTexture()
+	{
+		return m_pBindColorTex;
+	}
 protected:
 	ID3D12Resource * m_pRenderTarget;
 	D3D12::CPUHandle* m_pRenderTargetHandle;
+
+	std::shared_ptr<Texture> m_pBindColorTex;
 
 	RenderBase::PixelFormat::Code m_RTFormat;
 private:

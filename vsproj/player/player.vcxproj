@@ -155,6 +155,7 @@
     <ClInclude Include="..\..\src\player\RenderObj.h" />
     <ClInclude Include="..\..\src\player\RenderStateData.h" />
     <ClInclude Include="..\..\src\player\RenderTarget.h" />
+    <ClInclude Include="..\..\src\player\ResState.h" />
     <ClInclude Include="..\..\src\player\RootSigCreator.h" />
     <ClInclude Include="..\..\src\player\ShaderDesc.h" />
     <ClInclude Include="..\..\src\player\TestShader.h" />

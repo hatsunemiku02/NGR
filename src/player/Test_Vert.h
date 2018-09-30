@@ -16,7 +16,7 @@ public:
 	std::shared_ptr<RenderBase::VertexBufferData> m_pData;
 
 	Math::float3* m_pVert;
-
+	Math::float4* m_pTexCoord;
 };
 
 void TestVert::SetupVertData()
@@ -44,5 +44,28 @@ void TestVert::SetupVertData()
 	m_pData->vertex.vertexComponentStreams[0].data = m_pVert;
 	m_pData->vertex.vertexComponentStreams[0].offsetInByte = 0;
 	m_pData->vertex.vertexComponentStreams[0].elemSizeInByte = 12;
+
+	m_pData->vertex.vertexComponents.emplace_back(RenderBase::VertexComponent::TexCoord, 0, RenderBase::VertexComponent::Float4, 0);
+	m_pData->vertex.vertexComponentStreams.emplace_back();
+
+	m_pTexCoord = new Math::float4[3]();
+	m_pTexCoord[0].x() = 0.0f;
+	m_pTexCoord[0].y() = 0.33f;
+	m_pTexCoord[0].z() = 0.0f;
+
+
+	m_pTexCoord[1].x() = 0.25f;
+	m_pTexCoord[1].y() = -0.33f;
+	m_pTexCoord[1].z() = 0.0f;
+
+
+	m_pTexCoord[2].x() = -0.25f;
+	m_pTexCoord[2].y() = -0.33f;
+	m_pTexCoord[2].z() = 0.0f;
+
+	m_pData->vertex.vertexComponentStreams[1].data = m_pVert;
+	m_pData->vertex.vertexComponentStreams[1].offsetInByte = 12;
+	m_pData->vertex.vertexComponentStreams[1].elemSizeInByte = 16;
+
 }
 

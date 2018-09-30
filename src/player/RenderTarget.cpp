@@ -38,6 +38,8 @@ void RenderTarget::Init(const std::shared_ptr<Texture>& pTexture)
 		CreateRenderTargetView(m_pRenderTarget, nullptr, m_pRenderTargetHandle->handle);
 
 	m_RTFormat = pTexture->GetTextureFormat();
+
+	m_pBindColorTex = pTexture;
 }
 
 

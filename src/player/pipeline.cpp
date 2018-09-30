@@ -76,7 +76,7 @@ void Pipeline::Reset()
 	m_CommandList->GetCommandList()->RSSetViewports(1, &m_pViewPort->GetViewPort());
 	m_CommandList->GetCommandList()->RSSetScissorRects(1, &m_pViewPort->GetRect());
 
-
+	D3D12_RESOURCE_STATES startState = D3D12_RESOURCE_STATE_PRESENT;
 	std::shared_ptr<RenderTarget> currentRT;
 	if (m_pRenderTarget==nullptr)
 	{
@@ -84,15 +84,16 @@ void Pipeline::Reset()
 	}
 	else {
 		currentRT = m_pRenderTarget;
+		startState = ToDX12State(currentRT->GetBindColorTexture()->GetResState());
 	}
 
 	m_CommandList->GetCommandList()
 		->ResourceBarrier(1,
 			&CD3DX12_RESOURCE_BARRIER::Transition(currentRT->GetRenderTarget(),
-				D3D12_RESOURCE_STATE_PRESENT,
+				startState,
 				D3D12_RESOURCE_STATE_RENDER_TARGET));
 
-	D3D12::CPUHandle* cpuhandle = currentRT->GetRenderTargetHandke();
+	D3D12::CPUHandle* cpuhandle = currentRT->GetRenderTargetHandle();
 	m_CommandList->GetCommandList()->OMSetRenderTargets(1, &cpuhandle->handle, FALSE, nullptr);
 
 	const float clearColor[] = { 0.5f, 0.5f, 0.5f, 1.0f };
@@ -118,6 +119,16 @@ void Pipeline::SetMaterial(const std::shared_ptr<RenderObj>& obj)
 	D3D12::DescriptorHeap* pSrvHeap = D3D12::RenderDeviceD3D12::Instance()->GetCsuHeap();
 	for (int i = 0; i < obj->m_pMaterial->GetTextures().size(); i++)
 	{
+		D3D12_RESOURCE_STATES startState = ToDX12State(obj->m_pMaterial->GetTextures()[i]->GetResState());
+		if (startState!= D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE)
+		{
+			m_CommandList->GetCommandList()
+				->ResourceBarrier(1,
+					&CD3DX12_RESOURCE_BARRIER::Transition(obj->m_pMaterial->GetTextures()[i]->GetTextureRes(),
+						startState,
+						D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE));
+		}
+
 		m_CommandList->GetCommandList()->SetGraphicsRootDescriptorTable(i, pSrvHeap->GetGpuHandleFromCpu(*obj->m_pMaterial->GetTextures()[i]->GetCpuHandle()));
 	}
 
