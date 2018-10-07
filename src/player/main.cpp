@@ -38,7 +38,7 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 D3D12::RenderDeviceD3D12* g_pDevice = new D3D12::RenderDeviceD3D12();
 std::shared_ptr<D3D12::GraphicCommandList> g_pResourceCmdList;
 TestVert testVert;
-
+TestVertTex testVertTEX;
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
 	_In_ LPWSTR    lpCmdLine,
@@ -70,9 +70,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	g_pResourceCmdList = std::make_shared<D3D12::GraphicCommandList>();
 	g_pResourceCmdList->ResetState();
 	testVert.SetupVertData();
+	testVertTEX.SetupVertData();
 
 	std::shared_ptr<D3D12::PrimitiveGroupD3D12> pPG12 = std::make_shared<D3D12::PrimitiveGroupD3D12>();
 	pPG12->LoadBuffers(g_pResourceCmdList, testVert.m_pData, nullptr);
+
+	std::shared_ptr<D3D12::PrimitiveGroupD3D12> pPGPRE = std::make_shared<D3D12::PrimitiveGroupD3D12>();
+	pPGPRE->LoadBuffers(g_pResourceCmdList, testVertTEX.m_pData, nullptr);
 
 	TestShader testShader;
 	testShader.Init();
@@ -85,10 +89,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	CD3DX12_SHADER_BYTECODE psTex = CD3DX12_SHADER_BYTECODE(texTestShader.mtexPixelShader);
 
  	std::shared_ptr<Material> mat = std::make_shared<Material>();
- 	mat->SetShaderCode(const_cast<void*>(vs.pShaderBytecode), vs.BytecodeLength, const_cast<void*>(ps.pShaderBytecode), ps.BytecodeLength);
-
 	std::shared_ptr<Material> texmat = std::make_shared<Material>();
-	mat->SetShaderCode(const_cast<void*>(vsTex.pShaderBytecode), vsTex.BytecodeLength, const_cast<void*>(psTex.pShaderBytecode), psTex.BytecodeLength);
+	texmat->SetShaderCode(const_cast<void*>(vsTex.pShaderBytecode), vsTex.BytecodeLength, const_cast<void*>(psTex.pShaderBytecode), psTex.BytecodeLength);
+	mat->SetShaderCode(const_cast<void*>(vs.pShaderBytecode), vs.BytecodeLength, const_cast<void*>(ps.pShaderBytecode), ps.BytecodeLength);
 
 	
 	Math::float4 color = Math::float4(1, 0, 1, 0);
@@ -110,7 +113,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	pViewPort->Init( 800, 600);
 
 	std::shared_ptr<RenderObj> pObj = std::make_shared<RenderObj>();
-	pObj->Init(pPG12);
+	pObj->Init( pPGPRE);
 	pObj->m_pMaterial = texmat;
 
 	std::shared_ptr<RenderObj> pObjPreChain = std::make_shared<RenderObj>();
