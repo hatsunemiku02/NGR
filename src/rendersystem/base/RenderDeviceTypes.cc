@@ -361,7 +361,7 @@ namespace RenderBase
 		  m_addressW(eTAMWRAP),
 		  m_Filter(eTFPOINT),
 		  m_maxAnisotropy(16),
-		  m_bindpoint(-1)
+		  m_bindpoint(0)
 		
 	{
 

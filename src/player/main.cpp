@@ -74,7 +74,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	std::shared_ptr<D3D12::PrimitiveGroupD3D12> pPG12 = std::make_shared<D3D12::PrimitiveGroupD3D12>();
 	pPG12->LoadBuffers(g_pResourceCmdList, testVert.m_pData, nullptr);
-
 	std::shared_ptr<D3D12::PrimitiveGroupD3D12> pPGPRE = std::make_shared<D3D12::PrimitiveGroupD3D12>();
 	pPGPRE->LoadBuffers(g_pResourceCmdList, testVertTEX.m_pData, nullptr);
 
@@ -98,10 +97,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	RenderBase::DataStream color_datastream;
 	color_datastream.data = &color;
 	color_datastream.sizeInByte = sizeof(color);
-	mat->InitMat({ (uint)color_datastream.sizeInByte },0);
+	mat->InitMat({ (uint)color_datastream.sizeInByte },0,0);
 	mat->UpdateConstantBuffer(0, color_datastream);
 
-	texmat->InitMat({ (uint)color_datastream.sizeInByte }, 1);
+	texmat->InitMat({ (uint)color_datastream.sizeInByte }, 1,1);
 	texmat->UpdateConstantBuffer(0, color_datastream);
 
 	g_pResourceCmdList->ExecuteCommandList();
@@ -134,12 +133,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	
 
 
-	//main pipeline
-	Pipeline* renderPipeline = new Pipeline();
-	renderPipeline->SetViewPort(pViewPort);
-	renderPipeline->SetRenderToScreen(RenderBase::PixelFormat::A4R4G4B4, hwnd);
-	renderPipeline->AddRenderObj(pObj);
-	pObj->GenerateInternal(renderPipeline->GenerateMatExternalInfo());
+
 
 
 	//pre pipeline
@@ -155,7 +149,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	pObjPreChain->GenerateInternal(rptt1->GenerateMatExternalInfo());
 
 
-
+	//main pipeline
+	Pipeline* renderPipeline = new Pipeline();
+	renderPipeline->SetViewPort(pViewPort);
+	renderPipeline->SetRenderToScreen(RenderBase::PixelFormat::A4R4G4B4, hwnd);
+	renderPipeline->AddRenderObj(pObj);
+	texmat->SetTexture(0, m_pP1RTTex);
+	pObj->GenerateInternal(renderPipeline->GenerateMatExternalInfo());
 
 	// 主消息循环: 
 	while (GetMessage(&msg, nullptr, 0, 0))

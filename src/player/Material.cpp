@@ -27,7 +27,7 @@ void Material::SetShaderCode(void* vs, uint vl, void* ps, uint pl)
 	m_PsoData.psLength = pl;
 }
 
-void Material::InitMat(const std::vector<uint>& sizeList, uint TextureCount)
+void Material::InitMat(const std::vector<uint>& sizeList, uint textureCount,uint samplerCount)
 {
 	m_ConstantBuffers.resize(sizeList.size());
 	for (int i=0;i< sizeList.size();i++)
@@ -39,7 +39,15 @@ void Material::InitMat(const std::vector<uint>& sizeList, uint TextureCount)
 	{
 		m_SigInfo.cbvInfo[i] = i+ MAT_RIG_START_IDX;
 	}
-	m_Textures.resize(TextureCount);
+	m_Textures.resize(textureCount);
+	m_SigInfo.srvInfo.resize(textureCount);
+	for (int i = 0; i < m_Textures.size(); i++)
+	{
+		m_SigInfo.srvInfo[i] = i;
+	}
+
+	m_SigInfo.samplerInfo.resize(samplerCount);
+	
 }
 
 void Material::UpdateConstantBuffer(int index, const RenderBase::DataStream& data)

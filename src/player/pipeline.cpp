@@ -105,15 +105,16 @@ void Pipeline::SetMaterial(const std::shared_ptr<RenderObj>& obj)
 {
 	m_CommandList->GetCommandList()->SetGraphicsRootSignature(obj->m_pRootSig->GetRootSignature());
 	m_CommandList->GetCommandList()->SetPipelineState(obj->m_pPipeStateObj->GetPso());
-
+	
+	uint texCount = obj->m_pMaterial->GetTextures().size();
 	for (int i = 0; i < obj->GetConstantBuffers().size(); i++)
 	{
-		m_CommandList->GetCommandList()->SetGraphicsRootConstantBufferView(i, obj->GetConstantBuffers()[i].GetBuffer()->GetGPUVirtualAddress());
+		m_CommandList->GetCommandList()->SetGraphicsRootConstantBufferView(i+ texCount, obj->GetConstantBuffers()[i].GetBuffer()->GetGPUVirtualAddress());
 	}
 
 	for (int n = 0; n < obj->m_pMaterial->GetConstantBuffers().size(); n++)
 	{
-		m_CommandList->GetCommandList()->SetGraphicsRootConstantBufferView(n + obj->GetConstantBuffers().size(), obj->m_pMaterial->GetConstantBuffers()[n].GetBuffer()->GetGPUVirtualAddress());
+		m_CommandList->GetCommandList()->SetGraphicsRootConstantBufferView(n + obj->GetConstantBuffers().size() + texCount , obj->m_pMaterial->GetConstantBuffers()[n].GetBuffer()->GetGPUVirtualAddress());
 	}
 
 	D3D12::DescriptorHeap* pSrvHeap = D3D12::RenderDeviceD3D12::Instance()->GetCsuHeap();
@@ -128,7 +129,8 @@ void Pipeline::SetMaterial(const std::shared_ptr<RenderObj>& obj)
 						startState,
 						D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE));
 		}
-
+		ID3D12DescriptorHeap* ppHeaps[] = { D3D12::RenderDeviceD3D12::Instance()->GetCsuHeap()->GetHeap() };
+		m_CommandList->GetCommandList()->SetDescriptorHeaps(1, ppHeaps);
 		m_CommandList->GetCommandList()->SetGraphicsRootDescriptorTable(i, pSrvHeap->GetGpuHandleFromCpu(*obj->m_pMaterial->GetTextures()[i]->GetCpuHandle()));
 	}
 

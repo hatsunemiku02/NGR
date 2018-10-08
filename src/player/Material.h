@@ -11,7 +11,7 @@ public:
 	
 	void SetShaderCode(void* vs,uint vl,void* ps,uint pl);
 
-	void InitMat(const std::vector<uint>& sizeList,uint TextureCount);
+	void InitMat(const std::vector<uint>& sizeList, uint textureCount, uint samplerCount);
 	void UpdateConstantBuffer(int index,const RenderBase::DataStream& data);
 
 	void SetTexture(uint index, const std::shared_ptr<Texture>& pTexture);

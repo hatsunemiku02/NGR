@@ -63,7 +63,7 @@ void Texture::Init(bool allowRT,uint width, uint height, RenderBase::PixelFormat
 	srvDesc.Texture2D.PlaneSlice = 0;
 
 	D3D12::DescriptorHeap* pSrvHeap = D3D12::RenderDeviceD3D12::Instance()->GetCsuHeap();
-	D3D12::CPUHandle* m_pSrvHandle = &pSrvHeap->GetCPUHandle();
+    m_pSrvHandle = &pSrvHeap->GetCPUHandle();
 
 	pDevice->CreateShaderResourceView(m_pTextureRes, &srvDesc, m_pSrvHandle->handle);
 	
