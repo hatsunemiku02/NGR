@@ -80,7 +80,7 @@ void RenderDeviceD3D12::D3D12RenderStateCache::ClearCache()
 }
 
 _Use_decl_annotations_
-void GetHardwareAdapter(_In_ IDXGIFactory2* pFactory, _Outptr_result_maybenull_ IDXGIAdapter1** ppAdapter)
+void GetHardwareAdapter(IDXGIFactory2* pFactory, IDXGIAdapter1** ppAdapter)
 {
 	ComPtr<IDXGIAdapter1> adapter;
 	*ppAdapter = nullptr;
@@ -110,32 +110,35 @@ void GetHardwareAdapter(_In_ IDXGIFactory2* pFactory, _Outptr_result_maybenull_ 
 
 bool RenderDeviceD3D12::InitDevice()
 {
-	UINT dxgiFactoryFlags = 0;
-#if _DEBUG
-	ComPtr<ID3D12Debug> debugController;
-	if (SUCCEEDED(D3D12GetDebugInterface(IID_PPV_ARGS(&debugController))))
-	{
-		debugController->EnableDebugLayer();
-
-		// Enable additional debug layers.
-		dxgiFactoryFlags |= DXGI_CREATE_FACTORY_DEBUG;
-	}
-#endif
-
-	HRESULT hr = CreateDXGIFactory2(dxgiFactoryFlags,IID_PPV_ARGS(&m_pDxgiFactory));
-	if (FAILED(hr))
-	{
-		assert(false);
-	}
-	ComPtr<IDXGIAdapter1> hardwareAdapter;
-	GetHardwareAdapter(m_pDxgiFactory, &hardwareAdapter);
-	ComPtr<ID3D12Device> lvd ;
-	hr = D3D12CreateDevice(hardwareAdapter.Get(), D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(&lvd));
-	m_pDevice12 = lvd.Get();
-	if (FAILED(hr))
-	{
-		assert(false);
-	}
+ 	UINT dxgiFactoryFlags = 0;
+ #if _DEBUG
+ 	{
+ 		ComPtr<ID3D12Debug> debugController;
+ 		if (SUCCEEDED(D3D12GetDebugInterface(IID_PPV_ARGS(&debugController))))
+ 		{
+ 			debugController->EnableDebugLayer();
+ 
+ 			// Enable additional debug layers.
+ 			dxgiFactoryFlags |= DXGI_CREATE_FACTORY_DEBUG;
+ 		}
+ 	}
+ #endif
+ 	ComPtr<IDXGIFactory4> factory;
+ 	HRESULT hr = CreateDXGIFactory2(dxgiFactoryFlags,IID_PPV_ARGS(&factory));
+ 	if (FAILED(hr))
+ 	{
+ 		assert(false);
+ 	}
+ 	m_pDxgiFactory = factory.Get();
+ 	ComPtr<IDXGIAdapter1> hardwareAdapter;
+ 	GetHardwareAdapter(factory.Get(), &hardwareAdapter);
+ 	ComPtr<ID3D12Device> lvd ;
+ 	hr = D3D12CreateDevice(hardwareAdapter.Get(), D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(&lvd));
+ 	m_pDevice12 = lvd.Get();
+ 	if (FAILED(hr))
+ 	{
+ 		assert(false);
+ 	}
 
 	D3D12_COMMAND_QUEUE_DESC desc;
 	desc.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;

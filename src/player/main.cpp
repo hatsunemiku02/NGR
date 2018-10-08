@@ -21,6 +21,7 @@
 #include "pipeline.h"
 #include "RenderTarget.h"
 #include "TestShader.h"
+#include <wrl.h>
 
 #define MAX_LOADSTRING 100
 
@@ -39,7 +40,13 @@ D3D12::RenderDeviceD3D12* g_pDevice = new D3D12::RenderDeviceD3D12();
 std::shared_ptr<D3D12::GraphicCommandList> g_pResourceCmdList;
 TestVert testVert;
 TestVertTex testVertTEX;
-int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
+
+using Microsoft::WRL::ComPtr;
+
+
+
+
+int APIENTRY  wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
 	_In_ LPWSTR    lpCmdLine,
 	_In_ int       nCmdShow)
@@ -93,15 +100,20 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	mat->SetShaderCode(const_cast<void*>(vs.pShaderBytecode), vs.BytecodeLength, const_cast<void*>(ps.pShaderBytecode), ps.BytecodeLength);
 
 	
-	Math::float4 color = Math::float4(1, 0, 1, 0);
+	Math::float4 color = Math::float4(1, 0, 0, 0);
 	RenderBase::DataStream color_datastream;
 	color_datastream.data = &color;
 	color_datastream.sizeInByte = sizeof(color);
 	mat->InitMat({ (uint)color_datastream.sizeInByte },0,0);
 	mat->UpdateConstantBuffer(0, color_datastream);
 
-	texmat->InitMat({ (uint)color_datastream.sizeInByte }, 1,1);
-	texmat->UpdateConstantBuffer(0, color_datastream);
+
+	Math::float4 color2 = Math::float4(1, 1, 1, 1);
+	RenderBase::DataStream color_datastream2;
+	color_datastream2.data = &color2;
+	color_datastream2.sizeInByte = sizeof(color2);
+	texmat->InitMat({ (uint)color_datastream2.sizeInByte }, 1,1);
+	texmat->UpdateConstantBuffer(0, color_datastream2);
 
 	g_pResourceCmdList->ExecuteCommandList();
 	g_pResourceCmdList->WaitForExecution();
@@ -119,21 +131,18 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	pObjPreChain->Init(pPG12);
 	pObjPreChain->m_pMaterial = mat;
 
-	Math::float4 offset = Math::float4(0.5, .5, .5, 0);
+	Math::float4 offset = Math::float4(0.0, .0, .0, 0);
 	RenderBase::DataStream datastream;
 	datastream.data = &offset;
 	datastream.sizeInByte = sizeof(offset);
 	pObj->UpdatePosBuffer(datastream);
 
-	Math::float4 offset2 = Math::float4(0.0, 0.0, 0.0, 0);
+	Math::float4 offset2 = Math::float4(-0.5, -0.5, 0.0, 0);
 	RenderBase::DataStream datastream2;
 	datastream2.data = &offset2;
 	datastream2.sizeInByte = sizeof(offset2);
 	pObjPreChain->UpdatePosBuffer(datastream2);
 	
-
-
-
 
 
 	//pre pipeline
@@ -161,8 +170,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	while (GetMessage(&msg, nullptr, 0, 0))
 	{
 
-		rptt1->Reset();
-		rptt1->Render();
+ 		rptt1->Reset();
+ 		rptt1->Render();
+ 		rptt1->Wait();
 
 		renderPipeline->Reset();
 		renderPipeline->Render();

@@ -95,8 +95,13 @@ GraphicCommandList::~GraphicCommandList()
 void GraphicCommandList::ResetState()
 {
 	//
-
-	m_pCommandList->Reset(RenderDeviceD3D12::Instance()->GetCmdAllocator(), NULL);
+	//RenderDeviceD3D12::Instance()->GetCmdAllocator()->Reset();
+	
+	HRESULT hr = m_pCommandList->Reset(RenderDeviceD3D12::Instance()->GetCmdAllocator(), NULL);
+	if (FAILED(hr))
+	{
+		assert(false);
+	}
 }
 
 uint GraphicCommandList::ExecuteCommandList()

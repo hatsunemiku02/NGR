@@ -68,6 +68,13 @@ void Pipeline::SetRenderToScreen(RenderBase::PixelFormat::Code format, HWND hwnd
 	}
 }
 
+void Pipeline::Wait()
+{
+	m_CommandList->WaitForExecution();
+}
+
+
+
 void Pipeline::Reset()
 {
 	m_CommandList->WaitForExecution();
@@ -92,6 +99,11 @@ void Pipeline::Reset()
 			&CD3DX12_RESOURCE_BARRIER::Transition(currentRT->GetRenderTarget(),
 				startState,
 				D3D12_RESOURCE_STATE_RENDER_TARGET));
+
+	if (currentRT->GetBindColorTexture())
+	{
+		currentRT->GetBindColorTexture()->RecordState(ResState::RenderTarget);
+	}
 
 	D3D12::CPUHandle* cpuhandle = currentRT->GetRenderTargetHandle();
 	m_CommandList->GetCommandList()->OMSetRenderTargets(1, &cpuhandle->handle, FALSE, nullptr);
@@ -128,6 +140,7 @@ void Pipeline::SetMaterial(const std::shared_ptr<RenderObj>& obj)
 					&CD3DX12_RESOURCE_BARRIER::Transition(obj->m_pMaterial->GetTextures()[i]->GetTextureRes(),
 						startState,
 						D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE));
+			obj->m_pMaterial->GetTextures()[i]->RecordState(ResState::ShaderRes);
 		}
 		ID3D12DescriptorHeap* ppHeaps[] = { D3D12::RenderDeviceD3D12::Instance()->GetCsuHeap()->GetHeap() };
 		m_CommandList->GetCommandList()->SetDescriptorHeaps(1, ppHeaps);
@@ -158,17 +171,15 @@ void Pipeline::Render()
 		RenderOneItem(renderobj);
 	}
 
-	std::shared_ptr<RenderTarget> currentRT;
+
 	if (m_pRenderTarget == nullptr)
 	{
+		std::shared_ptr<RenderTarget> currentRT;
 		currentRT = m_pDefaultRenderTargets[m_pDefaultSwapChain->GetCurrentBackBufferIndex()];
-	}
-	else {
-		currentRT = m_pRenderTarget;
-	}
+		m_CommandList->GetCommandList()->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(currentRT->GetRenderTarget(), D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT));
 
+	}
 	// Indicate that the back buffer will now be used to present.
-	m_CommandList->GetCommandList()->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(currentRT->GetRenderTarget(), D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT));
 
 	// Execute the command list.
 	m_CommandList->ExecuteCommandList();

@@ -25,6 +25,7 @@ public:
 
 	void Reset();
 	void Render();
+	void Wait();
 
 	Pipeline2MatInfo GenerateMatExternalInfo();
 
