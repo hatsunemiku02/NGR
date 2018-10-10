@@ -103,7 +103,7 @@ void TestVertTex::SetupVertData()
 	m_pTexCoord[2].y() = 1.0f;
 	m_pTexCoord[2].z() = 0.0f;
 
-	m_pData->vertex.vertexComponentStreams[1].data = m_pVert;
+	m_pData->vertex.vertexComponentStreams[1].data = m_pTexCoord;
 	m_pData->vertex.vertexComponentStreams[1].offsetInByte = 12;
 	m_pData->vertex.vertexComponentStreams[1].elemSizeInByte = 16;
 }

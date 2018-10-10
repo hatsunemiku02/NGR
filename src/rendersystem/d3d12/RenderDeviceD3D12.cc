@@ -123,15 +123,15 @@ bool RenderDeviceD3D12::InitDevice()
  		}
  	}
  #endif
- 	ComPtr<IDXGIFactory4> factory;
- 	HRESULT hr = CreateDXGIFactory2(dxgiFactoryFlags,IID_PPV_ARGS(&factory));
+ //	ComPtr<IDXGIFactory4> factory;
+ 	HRESULT hr = CreateDXGIFactory2(dxgiFactoryFlags,IID_PPV_ARGS(&m_pDxgiFactory));
  	if (FAILED(hr))
  	{
  		assert(false);
  	}
- 	m_pDxgiFactory = factory.Get();
+ //	m_pDxgiFactory = factory.Get();
  	ComPtr<IDXGIAdapter1> hardwareAdapter;
- 	GetHardwareAdapter(factory.Get(), &hardwareAdapter);
+ 	GetHardwareAdapter(m_pDxgiFactory, &hardwareAdapter);
  	ComPtr<ID3D12Device> lvd ;
  	hr = D3D12CreateDevice(hardwareAdapter.Get(), D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(&lvd));
  	m_pDevice12 = lvd.Get();

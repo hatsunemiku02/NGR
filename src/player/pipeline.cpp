@@ -46,7 +46,7 @@ void Pipeline::SetRenderToScreen(RenderBase::PixelFormat::Code format, HWND hwnd
 	swapChainDesc.SampleDesc.Count = 1;
 
 	IDXGIFactory4* factory = D3D12::RenderDeviceD3D12::Instance()->GetDXGI();
-	ComPtr<IDXGISwapChain1> swapChain;
+	IDXGISwapChain1* swapChain;
 	HRESULT hr = factory->CreateSwapChainForHwnd(
 		D3D12::RenderDeviceD3D12::Instance()->GetCmdQueue(),		// Swap chain needs the queue so that it can force a flush on it.
 		hwnd,
@@ -55,9 +55,8 @@ void Pipeline::SetRenderToScreen(RenderBase::PixelFormat::Code format, HWND hwnd
 		nullptr,
 		&swapChain
 	);
-	ComPtr<IDXGISwapChain3> swapChain3;
-	hr = swapChain.As(&swapChain3);
-	m_pDefaultSwapChain = swapChain3.Get();
+
+	m_pDefaultSwapChain = static_cast<IDXGISwapChain3*> (swapChain);
 	// This sample does not support fullscreen transitions.
 	hr = factory->MakeWindowAssociation(hwnd, DXGI_MWA_NO_ALT_ENTER);
 	D3D12::DescriptorHeap* pRTVHeap = D3D12::RenderDeviceD3D12::Instance()->GetRtvHeap();

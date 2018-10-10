@@ -49,7 +49,7 @@ PSInput VSMain(float4 position : POSITION, float4 uv : TEXCOORD)\
 {\
 	PSInput result;\
 	result.position = position + offset;\
-	result.uv = uv;\
+	result.uv = uv.xy;\
 	return result;\
 }\
 \

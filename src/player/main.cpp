@@ -72,23 +72,25 @@ int APIENTRY  wWinMain(_In_ HINSTANCE hInstance,
 
 	MSG msg;
 
+	OutputDebugString(L"before init device\n");
 	D3D12::RenderDeviceD3D12::Instance()->InitDevice();
-
+	OutputDebugString(L"after init device\n");
 	g_pResourceCmdList = std::make_shared<D3D12::GraphicCommandList>();
 	g_pResourceCmdList->ResetState();
 	testVert.SetupVertData();
 	testVertTEX.SetupVertData();
 
-	std::shared_ptr<D3D12::PrimitiveGroupD3D12> pPG12 = std::make_shared<D3D12::PrimitiveGroupD3D12>();
-	pPG12->LoadBuffers(g_pResourceCmdList, testVert.m_pData, nullptr);
+	 std::shared_ptr<D3D12::PrimitiveGroupD3D12> pPG12 = std::make_shared<D3D12::PrimitiveGroupD3D12>();
+	 pPG12->LoadBuffers(g_pResourceCmdList, testVert.m_pData, nullptr);
 	std::shared_ptr<D3D12::PrimitiveGroupD3D12> pPGPRE = std::make_shared<D3D12::PrimitiveGroupD3D12>();
 	pPGPRE->LoadBuffers(g_pResourceCmdList, testVertTEX.m_pData, nullptr);
 
 	TestShader testShader;
+	OutputDebugString(L"compile shader\n");
 	testShader.Init();
 	CD3DX12_SHADER_BYTECODE vs = CD3DX12_SHADER_BYTECODE(testShader.mVertexShader);
 	CD3DX12_SHADER_BYTECODE ps = CD3DX12_SHADER_BYTECODE(testShader.mPixelShader);
-
+	OutputDebugString(L"AFTER compile shader\n");
 	TestShader texTestShader;
 	texTestShader.Init();
 	CD3DX12_SHADER_BYTECODE vsTex = CD3DX12_SHADER_BYTECODE(texTestShader.mtexVertexShader);
@@ -108,7 +110,7 @@ int APIENTRY  wWinMain(_In_ HINSTANCE hInstance,
 	mat->UpdateConstantBuffer(0, color_datastream);
 
 
-	Math::float4 color2 = Math::float4(1, 1, 1, 1);
+	Math::float4 color2 = Math::float4(1, 1, 0, 1);
 	RenderBase::DataStream color_datastream2;
 	color_datastream2.data = &color2;
 	color_datastream2.sizeInByte = sizeof(color2);
@@ -137,12 +139,12 @@ int APIENTRY  wWinMain(_In_ HINSTANCE hInstance,
 	datastream.sizeInByte = sizeof(offset);
 	pObj->UpdatePosBuffer(datastream);
 
-	Math::float4 offset2 = Math::float4(-0.5, -0.5, 0.0, 0);
+	Math::float4 offset2 = Math::float4(0.5, 0.5, 0.0, 0);
 	RenderBase::DataStream datastream2;
 	datastream2.data = &offset2;
 	datastream2.sizeInByte = sizeof(offset2);
 	pObjPreChain->UpdatePosBuffer(datastream2);
-	
+		
 
 
 	//pre pipeline
@@ -159,23 +161,28 @@ int APIENTRY  wWinMain(_In_ HINSTANCE hInstance,
 
 
 	//main pipeline
-	Pipeline* renderPipeline = new Pipeline();
-	renderPipeline->SetViewPort(pViewPort);
-	renderPipeline->SetRenderToScreen(RenderBase::PixelFormat::A4R4G4B4, hwnd);
+ 	Pipeline* renderPipeline = new Pipeline();
+ 	renderPipeline->SetViewPort(pViewPort);
+ 	renderPipeline->SetRenderToScreen(RenderBase::PixelFormat::A4R4G4B4, hwnd);
+
+ //	renderPipeline->AddRenderObj(pObjPreChain);
+ //	pObjPreChain->GenerateInternal(renderPipeline->GenerateMatExternalInfo());
+
+
 	renderPipeline->AddRenderObj(pObj);
-	texmat->SetTexture(0, m_pP1RTTex);
-	pObj->GenerateInternal(renderPipeline->GenerateMatExternalInfo());
+ 	texmat->SetTexture(0, m_pP1RTTex);
+ 	pObj->GenerateInternal(renderPipeline->GenerateMatExternalInfo());
 
 	// 主消息循环: 
 	while (GetMessage(&msg, nullptr, 0, 0))
 	{
 
- 		rptt1->Reset();
- 		rptt1->Render();
- 		rptt1->Wait();
+  		rptt1->Reset();
+  		rptt1->Render();
+  		rptt1->Wait();
 
-		renderPipeline->Reset();
-		renderPipeline->Render();
+ 		renderPipeline->Reset();
+ 		renderPipeline->Render();
 
 		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
 		{
