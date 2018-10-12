@@ -35,7 +35,6 @@ void Pipeline::SetRenderTarget(const std::shared_ptr<RenderTarget>& pRenderTarge
 
 void Pipeline::SetRenderToScreen(RenderBase::PixelFormat::Code format, HWND hwnd)
 {
-	
 	DXGI_SWAP_CHAIN_DESC1 swapChainDesc = {};
 	swapChainDesc.BufferCount = 2;
 	swapChainDesc.Width = m_pViewPort->GetWidth();
@@ -150,17 +149,15 @@ void Pipeline::SetMaterial(const std::shared_ptr<RenderObj>& obj)
 
 void Pipeline::SetVertexBuffer(const std::shared_ptr<RenderObj>& obj)
 {
-	m_CommandList->GetCommandList()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-	m_CommandList->GetCommandList()->IASetVertexBuffers(0, 1, &obj->m_pPrimitiveGroup->GetVertexBuffer()->GetView());
+	m_CommandList->SetPrimitiveGroup(obj->m_pPrimitiveGroup);
 }
 
 void Pipeline::RenderOneItem(const std::shared_ptr<RenderObj>& obj)
 {
-	
 	SetMaterial(obj);
 	SetVertexBuffer(obj);
-
-	m_CommandList->GetCommandList()->DrawInstanced(3, 1, 0, 0);
+	
+	m_CommandList->DrawInstanced(obj->m_pPrimitiveGroup->GetNumVertices(), 1, 0, 0);
 }
 
 void Pipeline::Render()

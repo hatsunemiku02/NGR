@@ -1,6 +1,8 @@
 #include "stdneb.h"
 #include "CommandQueue.h"
 #include "RenderDeviceD3D12.h"
+#include "PrimitiveGroupD3D12.h"
+
 #if RENDERDEVICE_D3D12
 
 namespace D3D12
@@ -114,6 +116,17 @@ uint GraphicCommandList::ExecuteCommandList()
 	uint fenceValue = Signal();
 
 	return fenceValue;
+}
+
+void GraphicCommandList::SetPrimitiveGroup(const std::shared_ptr<PrimitiveGroupD3D12>& pPrimitiveGroup)
+{
+	m_pCommandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	m_pCommandList->IASetVertexBuffers(0, 1, & (pPrimitiveGroup->GetVertexBuffer()->GetView()));
+}
+
+void GraphicCommandList::DrawInstanced(uint VertexCountPerInstance, uint InstanceCount, uint StartVertexLocation, uint StartInstanceLocation)
+{
+	m_pCommandList->DrawInstanced(VertexCountPerInstance, InstanceCount, StartVertexLocation, StartInstanceLocation);
 }
 
 }

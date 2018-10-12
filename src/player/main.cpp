@@ -6,8 +6,8 @@
 #include "math/float4.h"
 #include "Test_Vert.h"
 #include "RenderObj.h"
-#include "ViewPort.h"
-#include "Texture.h"
+#include "d3d12/ViewPort.h"
+#include "d3d12/Texture.h"
 #define WIN32_LEAN_AND_MEAN             // 从 Windows 头中排除极少使用的资料
 // Windows 头文件: 
 #include <windows.h>
@@ -19,7 +19,7 @@
 #include <tchar.h>
 
 #include "pipeline.h"
-#include "RenderTarget.h"
+#include "d3d12/RenderTarget.h"
 #include "TestShader.h"
 #include <wrl.h>
 
@@ -144,8 +144,6 @@ int APIENTRY  wWinMain(_In_ HINSTANCE hInstance,
 	datastream2.data = &offset2;
 	datastream2.sizeInByte = sizeof(offset2);
 	pObjPreChain->UpdatePosBuffer(datastream2);
-		
-
 
 	//pre pipeline
 	std::shared_ptr<Texture> m_pP1RTTex = std::make_shared<Texture>();
@@ -164,9 +162,6 @@ int APIENTRY  wWinMain(_In_ HINSTANCE hInstance,
  	Pipeline* renderPipeline = new Pipeline();
  	renderPipeline->SetViewPort(pViewPort);
  	renderPipeline->SetRenderToScreen(RenderBase::PixelFormat::A4R4G4B4, hwnd);
-
- //	renderPipeline->AddRenderObj(pObjPreChain);
- //	pObjPreChain->GenerateInternal(renderPipeline->GenerateMatExternalInfo());
 
 
 	renderPipeline->AddRenderObj(pObj);

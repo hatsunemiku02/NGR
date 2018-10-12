@@ -1,7 +1,7 @@
 #pragma once
 #include "base/RenderDeviceTypes.h"
 #include "d3d12/DX12ConstantBuffer.h"
-#include "Texture.h"
+#include "d3d12/Texture.h"
 #include <vector>
 class Material
 {

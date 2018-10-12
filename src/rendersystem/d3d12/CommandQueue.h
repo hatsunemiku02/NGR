@@ -1,5 +1,5 @@
 #pragma once
-
+#include <memory>
 #include "core/types.h"
 #include "../config/RenderDeviceConfig.h"
 
@@ -9,7 +9,10 @@
 
 namespace D3D12
 {
-	class CommandList
+
+	class PrimitiveGroupD3D12;
+
+class CommandList
 {
 
 public:
@@ -71,6 +74,8 @@ public:
 
 	ID3D12GraphicsCommandList*	GetCommandList() const;
 
+	void SetPrimitiveGroup(const std::shared_ptr<PrimitiveGroupD3D12>& pPrimitiveGroup);
+	void DrawInstanced( uint VertexCountPerInstance, uint InstanceCount, uint StartVertexLocation, uint StartInstanceLocation);
 protected:
 private:
 
