@@ -18,9 +18,6 @@
     <ClInclude Include="..\..\src\player\Test_Vert.h">
       <Filter>Graphic</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\player\ViewPort.h">
-      <Filter>Graphic</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\player\TestShader.h">
       <Filter>Graphic</Filter>
     </ClInclude>
@@ -36,16 +33,7 @@
     <ClInclude Include="..\..\src\player\ShaderDesc.h">
       <Filter>Graphic\todo</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\player\RenderTarget.h">
-      <Filter>Graphic</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\player\PipeLine2MatInfo.h">
-      <Filter>Graphic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\player\Texture.h">
-      <Filter>Graphic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\player\ResState.h">
       <Filter>Graphic</Filter>
     </ClInclude>
   </ItemGroup>
@@ -59,9 +47,6 @@
     <ClCompile Include="..\..\src\player\RenderObj.cpp">
       <Filter>Graphic</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\player\Viewport.cpp">
-      <Filter>Graphic</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\player\Material.cpp">
       <Filter>Graphic</Filter>
     </ClCompile>
@@ -71,13 +56,7 @@
     <ClCompile Include="..\..\src\player\ShaderDesc.cpp">
       <Filter>Graphic\todo</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\player\RenderTarget.cpp">
-      <Filter>Graphic</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\player\PipeLine2MatInfo.cpp">
-      <Filter>Graphic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\player\Texture.cpp">
       <Filter>Graphic</Filter>
     </ClCompile>
   </ItemGroup>

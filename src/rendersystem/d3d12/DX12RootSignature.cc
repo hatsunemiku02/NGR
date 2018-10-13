@@ -27,21 +27,23 @@ void DX12RootSignature::Init(const RenderBase::SignatureInfo& info)
 
 	if (info.srvInfo.size() > 0)
 	{
-		nSlot++;
+		nSlot+= info.srvInfo.size();
 	}
 
 	std::vector<CD3DX12_ROOT_PARAMETER> rootParamList;
 	rootParamList.resize(nSlot, CD3DX12_ROOT_PARAMETER());
 
 	IndexT cvbParmOffset = 0;
-
-	if (info.srvInfo.size() > 0)
+	std::vector<CD3DX12_DESCRIPTOR_RANGE> srvRangeList;
+	if (info.srvInfo.size()>0)
 	{
-		CD3DX12_DESCRIPTOR_RANGE srvRange;
-		srvRange.Init(D3D12_DESCRIPTOR_RANGE_TYPE_SRV, info.srvInfo.size(), 0, 0, 0);
-
-		rootParamList[0].InitAsDescriptorTable(1, &srvRange, D3D12_SHADER_VISIBILITY_PIXEL);
-		cvbParmOffset = 1;
+		srvRangeList.resize(info.srvInfo.size());
+	}
+	for ( int i=0;i<info.srvInfo.size();i++ )
+	{
+		srvRangeList[i].Init(D3D12_DESCRIPTOR_RANGE_TYPE_SRV, 1, i, 0, 0);
+		rootParamList[i].InitAsDescriptorTable(1, &srvRangeList[i], D3D12_SHADER_VISIBILITY_PIXEL);
+		cvbParmOffset += 1;
 	}
 
 	for (IndexT i = 0; i < info.cbvInfo.size(); ++i)
@@ -84,7 +86,10 @@ void DX12RootSignature::Init(const RenderBase::SignatureInfo& info)
 	ID3DBlob* errorBlob = NULL;
 	HRESULT hr = D3D12SerializeRootSignature(&rootSigDesc, D3D_ROOT_SIGNATURE_VERSION_1,
 											 &serializedRootSig, &errorBlob);
-
+	if (errorBlob!=nullptr)
+	{
+		OutputDebugStringA((char*)errorBlob->GetBufferPointer());
+	}
 	if (FAILED(hr))
 	{
 		assert(false);

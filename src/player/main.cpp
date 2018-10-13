@@ -114,7 +114,7 @@ int APIENTRY  wWinMain(_In_ HINSTANCE hInstance,
 	RenderBase::DataStream color_datastream2;
 	color_datastream2.data = &color2;
 	color_datastream2.sizeInByte = sizeof(color2);
-	texmat->InitMat({ (uint)color_datastream2.sizeInByte }, 1,1);
+	texmat->InitMat({ (uint)color_datastream2.sizeInByte }, 2,1);
 	texmat->UpdateConstantBuffer(0, color_datastream2);
 
 	g_pResourceCmdList->ExecuteCommandList();
@@ -129,9 +129,14 @@ int APIENTRY  wWinMain(_In_ HINSTANCE hInstance,
 	pObj->Init( pPGPRE);
 	pObj->m_pMaterial = texmat;
 
+
 	std::shared_ptr<RenderObj> pObjPreChain = std::make_shared<RenderObj>();
 	pObjPreChain->Init(pPG12);
 	pObjPreChain->m_pMaterial = mat;
+
+	std::shared_ptr<RenderObj> pObjPreChain1 = std::make_shared<RenderObj>();
+	pObjPreChain1->Init(pPG12);
+	pObjPreChain1->m_pMaterial = mat;
 
 	Math::float4 offset = Math::float4(0.0, .0, .0, 0);
 	RenderBase::DataStream datastream;
@@ -145,6 +150,13 @@ int APIENTRY  wWinMain(_In_ HINSTANCE hInstance,
 	datastream2.sizeInByte = sizeof(offset2);
 	pObjPreChain->UpdatePosBuffer(datastream2);
 
+	Math::float4 offset3 = Math::float4(0.2, 0.2, 0.0, 0);
+	RenderBase::DataStream datastream3;
+	datastream3.data = &offset3;
+	datastream3.sizeInByte = sizeof(offset3);
+	pObjPreChain1->UpdatePosBuffer(datastream3);
+
+	
 	//pre pipeline
 	std::shared_ptr<Texture> m_pP1RTTex = std::make_shared<Texture>();
 	m_pP1RTTex->Init(true, 800, 600, RenderBase::PixelFormat::A4R4G4B4);
@@ -157,6 +169,18 @@ int APIENTRY  wWinMain(_In_ HINSTANCE hInstance,
 	rptt1->AddRenderObj(pObjPreChain);
 	pObjPreChain->GenerateInternal(rptt1->GenerateMatExternalInfo());
 
+	//pre pipeline2
+	std::shared_ptr<Texture> m_pP1RTTex2 = std::make_shared<Texture>();
+	m_pP1RTTex2->Init(true, 800, 600, RenderBase::PixelFormat::A4R4G4B4);
+	std::shared_ptr<RenderTarget> m_P1RTTar2 = std::make_shared<RenderTarget>();
+	m_P1RTTar2->Init(m_pP1RTTex2);
+
+	Pipeline* rptt2 = new Pipeline();
+	rptt2->SetViewPort(pViewPort);
+	rptt2->SetRenderTarget(m_P1RTTar2);
+	rptt2->AddRenderObj(pObjPreChain1);
+	pObjPreChain1->GenerateInternal(rptt2->GenerateMatExternalInfo());
+
 
 	//main pipeline
  	Pipeline* renderPipeline = new Pipeline();
@@ -166,6 +190,7 @@ int APIENTRY  wWinMain(_In_ HINSTANCE hInstance,
 
 	renderPipeline->AddRenderObj(pObj);
  	texmat->SetTexture(0, m_pP1RTTex);
+	texmat->SetTexture(1, m_pP1RTTex2);
  	pObj->GenerateInternal(renderPipeline->GenerateMatExternalInfo());
 
 	// 主消息循环: 
@@ -175,6 +200,10 @@ int APIENTRY  wWinMain(_In_ HINSTANCE hInstance,
   		rptt1->Reset();
   		rptt1->Render();
   		rptt1->Wait();
+
+		rptt2->Reset();
+		rptt2->Render();
+		rptt2->Wait();
 
  		renderPipeline->Reset();
  		renderPipeline->Render();

@@ -38,6 +38,7 @@ cbuffer matConstantBuffer : register(b1)\
 	float4 color;\
 };\
 Texture2D g_texture : register(t0);\
+Texture2D g_texture1 : register(t1);\
 SamplerState g_sampler : register(s0);\
 struct PSInput\
 {\
@@ -55,7 +56,7 @@ PSInput VSMain(float4 position : POSITION, float4 uv : TEXCOORD)\
 \
 float4 PSMain(PSInput input) : SV_TARGET\
 {\
-	return color*g_texture.Sample(g_sampler, input.uv);\
+	return color*(g_texture.Sample(g_sampler, input.uv)+g_texture1.Sample(g_sampler, input.uv));\
 }\
 ";
 

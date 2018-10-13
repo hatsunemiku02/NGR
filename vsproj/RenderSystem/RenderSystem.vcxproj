@@ -153,10 +153,13 @@
     <ClCompile Include="..\..\src\rendersystem\d3d12\IndexBufferD3D12.cc" />
     <ClCompile Include="..\..\src\rendersystem\d3d12\PrimitiveGroupD3D12.cc" />
     <ClCompile Include="..\..\src\rendersystem\d3d12\RenderDeviceD3D12.cc" />
+    <ClCompile Include="..\..\src\rendersystem\d3d12\RenderTarget.cpp" />
     <ClCompile Include="..\..\src\rendersystem\d3d12\RenderTargetD3D12.cc" />
+    <ClCompile Include="..\..\src\rendersystem\d3d12\Texture.cpp" />
     <ClCompile Include="..\..\src\rendersystem\d3d12\TextureD3D12.cc" />
     <ClCompile Include="..\..\src\rendersystem\d3d12\VertexBufferD3D12.cc" />
     <ClCompile Include="..\..\src\rendersystem\d3d12\VertexLayoutD3D12.cc" />
+    <ClCompile Include="..\..\src\rendersystem\d3d12\Viewport.cpp" />
     <ClCompile Include="..\..\src\rendersystem\stdneb.cc" />
     <ClCompile Include="compiletest.cpp" />
   </ItemGroup>
@@ -201,10 +204,14 @@
     <ClInclude Include="..\..\src\rendersystem\d3d12\IndexBufferD3D12.h" />
     <ClInclude Include="..\..\src\rendersystem\d3d12\PrimitiveGroupD3D12.h" />
     <ClInclude Include="..\..\src\rendersystem\d3d12\RenderDeviceD3D12.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\RenderTarget.h" />
     <ClInclude Include="..\..\src\rendersystem\d3d12\RenderTargetD3D12.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\ResState.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\Texture.h" />
     <ClInclude Include="..\..\src\rendersystem\d3d12\TextureD3D12.h" />
     <ClInclude Include="..\..\src\rendersystem\d3d12\VertexBufferD3D12.h" />
     <ClInclude Include="..\..\src\rendersystem\d3d12\VertexLayoutD3D12.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\ViewPort.h" />
     <ClInclude Include="..\..\src\rendersystem\stdneb.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

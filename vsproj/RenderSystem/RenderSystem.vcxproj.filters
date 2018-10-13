@@ -14,6 +14,9 @@
     <Filter Include="config">
       <UniqueIdentifier>{04b4f714-2db5-4d37-a871-fa6008dffaa5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="dx12\deceperate">
+      <UniqueIdentifier>{e9e75efa-1dfc-4a75-b89c-f2559f842493}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="compiletest.cpp">
@@ -29,12 +32,6 @@
       <Filter>dx12</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\rendersystem\d3d12\RenderDeviceD3D12.cc">
-      <Filter>dx12</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\rendersystem\d3d12\RenderTargetD3D12.cc">
-      <Filter>dx12</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\rendersystem\d3d12\TextureD3D12.cc">
       <Filter>dx12</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\rendersystem\d3d12\VertexBufferD3D12.cc">
@@ -139,6 +136,21 @@
     <ClCompile Include="..\..\src\rendersystem\base\RenderStateDesc.cc">
       <Filter>base</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\TextureD3D12.cc">
+      <Filter>dx12\deceperate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\RenderTargetD3D12.cc">
+      <Filter>dx12\deceperate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\RenderTarget.cpp">
+      <Filter>dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\Texture.cpp">
+      <Filter>dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\Viewport.cpp">
+      <Filter>dx12</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\rendersystem\stdneb.h">
@@ -151,12 +163,6 @@
       <Filter>dx12</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\rendersystem\d3d12\RenderDeviceD3D12.h">
-      <Filter>dx12</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\rendersystem\d3d12\RenderTargetD3D12.h">
-      <Filter>dx12</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\rendersystem\d3d12\TextureD3D12.h">
       <Filter>dx12</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\rendersystem\d3d12\VertexBufferD3D12.h">
@@ -275,6 +281,24 @@
     </ClInclude>
     <ClInclude Include="..\..\src\rendersystem\base\RenderResource.h">
       <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\TextureD3D12.h">
+      <Filter>dx12\deceperate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\RenderTargetD3D12.h">
+      <Filter>dx12\deceperate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\RenderTarget.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\ResState.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\Texture.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\ViewPort.h">
+      <Filter>dx12</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
