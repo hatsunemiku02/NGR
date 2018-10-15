@@ -17,6 +17,7 @@
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
+#include <thread>
 
 #include "pipeline.h"
 #include "d3d12/RenderTarget.h"
@@ -43,7 +44,11 @@ TestVertTex testVertTEX;
 
 using Microsoft::WRL::ComPtr;
 
-
+void RunPipline( Pipeline* pipline)
+{
+	pipline->Render();
+	pipline->Wait();
+}
 
 
 int APIENTRY  wWinMain(_In_ HINSTANCE hInstance,
@@ -193,18 +198,24 @@ int APIENTRY  wWinMain(_In_ HINSTANCE hInstance,
 	texmat->SetTexture(1, m_pP1RTTex2);
  	pObj->GenerateInternal(renderPipeline->GenerateMatExternalInfo());
 
+
+
 	// 主消息循环: 
 	while (GetMessage(&msg, nullptr, 0, 0))
 	{
-
-  		rptt1->Reset();
-  		rptt1->Render();
-  		rptt1->Wait();
-
+		rptt1->Reset();
 		rptt2->Reset();
-		rptt2->Render();
-		rptt2->Wait();
-
+		std::thread   t1(RunPipline, rptt1);
+		std::thread   t2(RunPipline, rptt2);
+//   		rptt1->Reset();
+//   		rptt1->Render();
+//   		rptt1->Wait();
+// 
+// 		rptt2->Reset();
+// 		rptt2->Render();
+// 		rptt2->Wait();
+		t1.join();
+		t2.join();
  		renderPipeline->Reset();
  		renderPipeline->Render();
 
