@@ -2,7 +2,7 @@
 #include <memory>
 #include "core/types.h"
 #include "../config/RenderDeviceConfig.h"
-
+#include "CmdAllocator.h"
 
 #if RENDERDEVICE_D3D12
 #include "D3D12Heads.h"
@@ -65,7 +65,8 @@ class GraphicCommandList : public CommandList
 public:
 
 	GraphicCommandList();
-
+	GraphicCommandList(CmdAllocator& allocator);
+	
 	virtual ~GraphicCommandList();
 
 	void ResetState();

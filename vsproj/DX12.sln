@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "foundation", "foundation\fo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "player", "player\player.vcxproj", "{E5962C73-8925-4DA1-9FEA-483354F119C2}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WindowsProject1", "WindowsProject1\WindowsProject1.vcxproj", "{432EB6D4-4714-42D7-B1B6-41ECFA64C072}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{E5962C73-8925-4DA1-9FEA-483354F119C2}.Release|x64.Build.0 = Release|x64
 		{E5962C73-8925-4DA1-9FEA-483354F119C2}.Release|x86.ActiveCfg = Release|Win32
 		{E5962C73-8925-4DA1-9FEA-483354F119C2}.Release|x86.Build.0 = Release|Win32
+		{432EB6D4-4714-42D7-B1B6-41ECFA64C072}.Debug|x64.ActiveCfg = Debug|x64
+		{432EB6D4-4714-42D7-B1B6-41ECFA64C072}.Debug|x64.Build.0 = Debug|x64
+		{432EB6D4-4714-42D7-B1B6-41ECFA64C072}.Debug|x86.ActiveCfg = Debug|Win32
+		{432EB6D4-4714-42D7-B1B6-41ECFA64C072}.Debug|x86.Build.0 = Debug|Win32
+		{432EB6D4-4714-42D7-B1B6-41ECFA64C072}.Release|x64.ActiveCfg = Release|x64
+		{432EB6D4-4714-42D7-B1B6-41ECFA64C072}.Release|x64.Build.0 = Release|x64
+		{432EB6D4-4714-42D7-B1B6-41ECFA64C072}.Release|x86.ActiveCfg = Release|Win32
+		{432EB6D4-4714-42D7-B1B6-41ECFA64C072}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

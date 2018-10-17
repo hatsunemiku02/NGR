@@ -15,7 +15,7 @@
       <UniqueIdentifier>{04b4f714-2db5-4d37-a871-fa6008dffaa5}</UniqueIdentifier>
     </Filter>
     <Filter Include="dx12\deceperate">
-      <UniqueIdentifier>{e9e75efa-1dfc-4a75-b89c-f2559f842493}</UniqueIdentifier>
+      <UniqueIdentifier>{59543802-5683-4a43-b7da-8094566d45a9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +149,9 @@
       <Filter>dx12</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\rendersystem\d3d12\Viewport.cpp">
+      <Filter>dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\CmdAllocator.cpp">
       <Filter>dx12</Filter>
     </ClCompile>
   </ItemGroup>
@@ -291,13 +294,16 @@
     <ClInclude Include="..\..\src\rendersystem\d3d12\RenderTarget.h">
       <Filter>dx12</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\rendersystem\d3d12\ResState.h">
-      <Filter>dx12</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\rendersystem\d3d12\Texture.h">
       <Filter>dx12</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\rendersystem\d3d12\ViewPort.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\ResState.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\CmdAllocator.h">
       <Filter>dx12</Filter>
     </ClInclude>
   </ItemGroup>

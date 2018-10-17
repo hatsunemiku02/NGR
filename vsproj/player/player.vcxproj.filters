@@ -36,6 +36,12 @@
     <ClInclude Include="..\..\src\player\PipeLine2MatInfo.h">
       <Filter>Graphic</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\player\ResState.h">
+      <Filter>Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\player\CommandList.h">
+      <Filter>Graphic\todo</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\player\main.cpp">
@@ -58,6 +64,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\player\PipeLine2MatInfo.cpp">
       <Filter>Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\player\CommandList.cpp">
+      <Filter>Graphic\todo</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

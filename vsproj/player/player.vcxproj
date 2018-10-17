@@ -23,7 +23,7 @@
     <ProjectGuid>{E5962C73-8925-4DA1-9FEA-483354F119C2}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>player</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -89,14 +89,18 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
       <AdditionalIncludeDirectories>..\..\src;..\..\src\rendersystem;..\..\src\foundation;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>dxgi.lib;d3d12.lib;D3DCompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d12.lib;dxgi.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>d3d12.dll</DelayLoadDLLs>
     </Link>
+    <PostBuildEvent>
+      <Command>editbin /SUBSYSTEM:CONSOLE $(OUTDIR)\$(ProjectName).exe</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -149,17 +153,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\player\CommandList.h" />
     <ClInclude Include="..\..\src\player\Material.h" />
     <ClInclude Include="..\..\src\player\pipeline.h" />
     <ClInclude Include="..\..\src\player\PipeLine2MatInfo.h" />
     <ClInclude Include="..\..\src\player\RenderObj.h" />
     <ClInclude Include="..\..\src\player\RenderStateData.h" />
+    <ClInclude Include="..\..\src\player\ResState.h" />
     <ClInclude Include="..\..\src\player\RootSigCreator.h" />
     <ClInclude Include="..\..\src\player\ShaderDesc.h" />
     <ClInclude Include="..\..\src\player\TestShader.h" />
     <ClInclude Include="..\..\src\player\Test_Vert.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\player\CommandList.cpp" />
     <ClCompile Include="..\..\src\player\main.cpp" />
     <ClCompile Include="..\..\src\player\Material.cpp" />
     <ClCompile Include="..\..\src\player\pipeline.cpp" />
