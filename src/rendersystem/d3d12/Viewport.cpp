@@ -1,7 +1,7 @@
 #include "ViewPort.h"
 #include "d3d12/D3D12Types.h"
-#include <wrl.h>
-using Microsoft::WRL::ComPtr;
+//#include <wrl.h>
+//using Microsoft::WRL::ComPtr;
 
 ViewPortD3D12::ViewPortD3D12()
 {
