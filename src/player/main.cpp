@@ -211,17 +211,13 @@ int APIENTRY  wWinMain(_In_ HINSTANCE hInstance,
 	{
 		rptt1->Reset();
 		rptt2->Reset();
+
 		std::thread   t1(RunPipline, rptt1);
 		std::thread   t2(RunPipline, rptt2);
-//   		rptt1->Reset();
-//   		rptt1->Render();
-//   		rptt1->Wait();
-// 
-// 		rptt2->Reset();
-// 		rptt2->Render();
-// 		rptt2->Wait();
+
 		t1.join();
 		t2.join();
+
  		renderPipeline->Reset();
  		renderPipeline->Render();
 
