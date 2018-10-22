@@ -65,7 +65,7 @@ class GraphicCommandList : public CommandList
 public:
 
 	GraphicCommandList();
-	GraphicCommandList(CmdAllocator& allocator);
+	GraphicCommandList(const std::shared_ptr<CmdAllocator>& allocator);
 	
 	virtual ~GraphicCommandList();
 
@@ -81,6 +81,7 @@ protected:
 private:
 
 	ID3D12GraphicsCommandList*		m_pCommandList;
+	std::shared_ptr<CmdAllocator>   m_pCmdAllocator;
 };
 
 inline ID3D12GraphicsCommandList* GraphicCommandList::GetCommandList() const

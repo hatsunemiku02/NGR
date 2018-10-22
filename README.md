@@ -1,8 +1,8 @@
-# NGR
+﻿# NGR
 todo
 : mrt
 
-  muti thread rendering
+  muti thread rendering 50%
   
   compute shader （forward+）
   

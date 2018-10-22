@@ -89,7 +89,7 @@ GraphicCommandList::GraphicCommandList()
 	m_pCommandList->Close();
 }
 
-GraphicCommandList::GraphicCommandList(CmdAllocator& allocator)
+GraphicCommandList::GraphicCommandList(const std::shared_ptr<CmdAllocator>& allocator)
 {
 	ID3D12Device* pDevice = RenderDeviceD3D12::Instance()->GetDevice();
 
@@ -101,12 +101,14 @@ GraphicCommandList::GraphicCommandList(CmdAllocator& allocator)
 
 	m_FenceEvent = ::CreateEvent(NULL, FALSE, FALSE, NULL);
 
-	hr = pDevice->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, allocator.GetCmdAllocator(), NULL, IID_PPV_ARGS(&m_pCommandList));
+	hr = pDevice->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, allocator->GetCmdAllocator(), NULL, IID_PPV_ARGS(&m_pCommandList));
 	if (FAILED(hr))
 	{
 		assert(false);
 	}
 	m_pCommandList->Close();
+
+	m_pCmdAllocator = allocator;
 }
 
 GraphicCommandList::~GraphicCommandList()
@@ -118,8 +120,11 @@ void GraphicCommandList::ResetState()
 {
 	//
 //	RenderDeviceD3D12::Instance()->GetCmdAllocator()->Reset();
-	
-	HRESULT hr = m_pCommandList->Reset(RenderDeviceD3D12::Instance()->GetCmdAllocator(), NULL);
+	HRESULT hr;
+	if (m_pCmdAllocator!=nullptr)
+		hr = m_pCommandList->Reset(m_pCmdAllocator->GetCmdAllocator(), NULL);
+	else
+		hr = m_pCommandList->Reset(RenderDeviceD3D12::Instance()->GetCmdAllocator(), NULL);
 	if (FAILED(hr))
 	{
 		assert(false);

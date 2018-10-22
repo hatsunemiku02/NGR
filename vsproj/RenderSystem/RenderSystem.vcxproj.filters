@@ -151,6 +151,9 @@
     <ClCompile Include="..\..\src\rendersystem\d3d12\Viewport.cpp">
       <Filter>dx12</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\rendersystem\d3d12\CmdAllocator.cpp">
+      <Filter>dx12</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\rendersystem\stdneb.h">
@@ -298,6 +301,9 @@
       <Filter>dx12</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\rendersystem\d3d12\ResState.h">
+      <Filter>dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendersystem\d3d12\CmdAllocator.h">
       <Filter>dx12</Filter>
     </ClInclude>
   </ItemGroup>

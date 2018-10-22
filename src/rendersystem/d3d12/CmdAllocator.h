@@ -12,9 +12,9 @@ public:
 	CmdAllocator();
 	virtual ~CmdAllocator();
 
-	void Init(D3D12::RenderDeviceD3D12* pRenderDevice);
+	void Init();
 
-	ID3D12CommandAllocator* GetCmdAllocator();
+	ID3D12CommandAllocator* GetCmdAllocator() const;
 protected:
 	ID3D12CommandAllocator * m_pCommandAllocator;
 private:
@@ -22,7 +22,7 @@ private:
 };
 
 
-inline ID3D12CommandAllocator* CmdAllocator::GetCmdAllocator()
+inline ID3D12CommandAllocator* CmdAllocator::GetCmdAllocator() const
 {
 	return m_pCommandAllocator;
 }

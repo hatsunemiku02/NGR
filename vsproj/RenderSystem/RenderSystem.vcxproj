@@ -143,6 +143,7 @@
     <ClCompile Include="..\..\src\rendersystem\base\VertexBuffer.cc" />
     <ClCompile Include="..\..\src\rendersystem\base\VertexComponent.cc" />
     <ClCompile Include="..\..\src\rendersystem\base\VertexLayout.cc" />
+    <ClCompile Include="..\..\src\rendersystem\d3d12\CmdAllocator.cpp" />
     <ClCompile Include="..\..\src\rendersystem\d3d12\CommandQueue.cc" />
     <ClCompile Include="..\..\src\rendersystem\d3d12\D3D12Types.cc" />
     <ClCompile Include="..\..\src\rendersystem\d3d12\D3D12Window.cc" />
@@ -192,6 +193,7 @@
     <ClInclude Include="..\..\src\rendersystem\base\VertexComponent.h" />
     <ClInclude Include="..\..\src\rendersystem\base\VertexLayout.h" />
     <ClInclude Include="..\..\src\rendersystem\config\RenderDeviceConfig.h" />
+    <ClInclude Include="..\..\src\rendersystem\d3d12\CmdAllocator.h" />
     <ClInclude Include="..\..\src\rendersystem\d3d12\CommandQueue.h" />
     <ClInclude Include="..\..\src\rendersystem\d3d12\D3D12Heads.h" />
     <ClInclude Include="..\..\src\rendersystem\d3d12\D3D12Types.h" />

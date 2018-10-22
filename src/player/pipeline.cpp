@@ -2,12 +2,18 @@
 #include "d3d12/DescriptorHeap.h"
 #include "d3d12/VertexBufferD3D12.h"
 #include "d3d12/D3D12Types.h"
+#include "PiplineThreadGroup.h"
 #include <wrl.h>
 using Microsoft::WRL::ComPtr;
 
 Pipeline::Pipeline()
 {
 	m_CommandList = std::make_unique<D3D12::GraphicCommandList> ();
+}
+
+Pipeline::Pipeline(const std::shared_ptr<PiplineThreadGroup>& thread)
+{
+	m_CommandList = std::make_unique<D3D12::GraphicCommandList>(thread->GetCMDAllocator());
 }
 
 Pipeline::~Pipeline()

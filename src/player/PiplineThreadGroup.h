@@ -6,9 +6,15 @@ class PiplineThreadGroup
 public:
 	PiplineThreadGroup();
 	virtual ~PiplineThreadGroup();
-
-
+	void Init();
+	const std::shared_ptr<CmdAllocator>& GetCMDAllocator() const;
 protected:
-	CmdAllocator m_CmdAlloctor;
+	std::shared_ptr<CmdAllocator> m_pCmdAlloctor;
 
 };
+
+
+inline const std::shared_ptr<CmdAllocator>& PiplineThreadGroup::GetCMDAllocator() const
+{
+	return m_pCmdAlloctor;
+}

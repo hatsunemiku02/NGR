@@ -7,11 +7,12 @@
 #include "d3d12/ViewPort.h"
 #include "d3d12/RenderTarget.h"
 #include "PipeLine2MatInfo.h"
-
+class PiplineThreadGroup;
 class Pipeline
 {
 public:
 	Pipeline();
+	Pipeline(const std::shared_ptr<PiplineThreadGroup>& thread);
 	~Pipeline();
 
 	void SetViewPort(const std::shared_ptr<ViewPortD3D12>& pViewPort);

@@ -22,6 +22,7 @@
 #include "pipeline.h"
 #include "d3d12/RenderTarget.h"
 #include "TestShader.h"
+#include "PiplineThreadGroup.h"
 #include <wrl.h>
 
 #define MAX_LOADSTRING 100
@@ -168,7 +169,9 @@ int APIENTRY  wWinMain(_In_ HINSTANCE hInstance,
 	std::shared_ptr<RenderTarget> m_P1RTTar = std::make_shared<RenderTarget>();
 	m_P1RTTar->Init(m_pP1RTTex);
 
-	Pipeline* rptt1 = new Pipeline();
+	std::shared_ptr<PiplineThreadGroup> _pipelineGroupPre1 = std::make_shared<PiplineThreadGroup>();
+	_pipelineGroupPre1->Init();
+	Pipeline* rptt1 = new Pipeline(_pipelineGroupPre1);
 	rptt1->SetViewPort(pViewPort);
 	rptt1->SetRenderTarget(m_P1RTTar);
 	rptt1->AddRenderObj(pObjPreChain);
@@ -180,7 +183,10 @@ int APIENTRY  wWinMain(_In_ HINSTANCE hInstance,
 	std::shared_ptr<RenderTarget> m_P1RTTar2 = std::make_shared<RenderTarget>();
 	m_P1RTTar2->Init(m_pP1RTTex2);
 
-	Pipeline* rptt2 = new Pipeline();
+
+	std::shared_ptr<PiplineThreadGroup> _pipelineGroupPre2 = std::make_shared<PiplineThreadGroup>();
+	_pipelineGroupPre2->Init();
+	Pipeline* rptt2 = new Pipeline(_pipelineGroupPre2);
 	rptt2->SetViewPort(pViewPort);
 	rptt2->SetRenderTarget(m_P1RTTar2);
 	rptt2->AddRenderObj(pObjPreChain1);
